@@ -9,12 +9,12 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap" rel="stylesheet">
-
-    <title>هگزاشاپ</title>
-
+  <title>
+ {% block title %}هگزاشاپ{% endblock %}
+</title>
       {% include 'main/header_references.html' %}
 
-    </head>
+  </head>
 
 <body>
 {% render_partial 'Home_page.views.header_site_component' %}

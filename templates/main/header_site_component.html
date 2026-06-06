@@ -1,4 +1,4 @@
-
+{% load static %}
     <!-- ***** Preloader Start ***** -->
     <div id="preloader">
         <div class="jumper">
@@ -18,7 +18,7 @@
                     <nav class="main-nav">
                         <!-- ***** Logo Start ***** -->
                         <a href="index.html" class="logo">
-                            <img src="static/images/logo.png">
+                            <img src={% static 'images/logo.png' %}>
                         </a>
                         <!-- ***** Logo End ***** -->
                         <!-- ***** Menu Start ***** -->
@@ -31,7 +31,7 @@
                                 <a href="#">صفحات</a>
                                 <ul>
                                     <li><a href="about.html">درباره ما</a></li>
-                                    <li><a href="products.html">محصولات</a></li>
+                                    <li><a href={% url 'product_page' %}>محصولات</a></li>
                                     <li><a href="single-product.html">محصول منفرد</a></li>
                                     <li><a href="contact.html">تماس با ما</a></li>
                                 </ul>
@@ -44,7 +44,7 @@
                                     <li><a href="#">صفحه ویژگی 3</a></li>
                                 </ul>
                             </li>
-                            <li class="scroll-to-section"><a href="#explore">کاوش</a></li>
+                            <li class="scroll-to-section"><a href="#">کاوش</a></li>
                         </ul>
                         <a class='menu-trigger'>
                             <span>منو</span>
