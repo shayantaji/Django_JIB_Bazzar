@@ -37,11 +37,14 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    #internal_module
     'Home_page',
-    'django_render_partial',
+    'account_module',
     'Product_page',
     'Contact_us_page',
-    'About_us_page'
+    'About_us_page',
+    #external_module
+    'django_render_partial',
 ]
 
 MIDDLEWARE = [
@@ -77,7 +80,10 @@ WSGI_APPLICATION = 'Jib_Bazar.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/6.0/ref/settings/#databases
-
+AUTH_USER_MODEL = 'account_module.User'
+DATABASES = {
+    'default': {}
+}
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
