@@ -1,58 +1,86 @@
 {% load static %}
-    <!-- ***** Preloader Start ***** -->
-    <div id="preloader">
-        <div class="jumper">
-            <div></div>
-            <div></div>
-            <div></div>
-        </div>
+<!-- ***** Preloader Start ***** -->
+<div id="preloader">
+    <div class="jumper">
+        <div></div>
+        <div></div>
+        <div></div>
     </div>
-    <!-- ***** Preloader End ***** -->
+</div>
+<!-- ***** Preloader End ***** -->
 
 
-    <!-- ***** Header Area Start ***** -->
-    <header class="header-area header-sticky">
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <nav class="main-nav">
-                        <!-- ***** Logo Start ***** -->
-                        <a href="index.html" class="logo">
-                            <img src={% static 'images/logo.png' %}>
-                        </a>
-                        <!-- ***** Logo End ***** -->
-                        <!-- ***** Menu Start ***** -->
-                        <ul class="nav">
-                            <li class="scroll-to-section"><a href="#top" class="active">خانه</a></li>
-                            <li class="scroll-to-section"><a href="#men">مردان</a></li>
-                            <li class="scroll-to-section"><a href="#women">زنان</a></li>
-                            <li class="scroll-to-section"><a href="#kids">بچه ها</a></li>
-                            <li class="submenu">
-                                <a href="#">صفحات</a>
-                                <ul>
-                                    <li><a href="about.html">درباره ما</a></li>
-                                    <li><a href={% url 'product_page' %}>محصولات</a></li>
-                                    <li><a href="single-product.html">محصول منفرد</a></li>
-                                    <li><a href="contact.html">تماس با ما</a></li>
-                                </ul>
-                            </li>
-                            <li class="submenu">
-                                <a href="#">ویژگی ها</a>
-                                <ul>
-                                    <li><a href="#">صفحه ویژگی 1</a></li>
-                                    <li><a href="#">صفحه ویژگی 2</a></li>
-                                    <li><a href="#">صفحه ویژگی 3</a></li>
-                                </ul>
-                            </li>
-                            <li class="scroll-to-section"><a href="#">کاوش</a></li>
-                        </ul>
-                        <a class='menu-trigger'>
-                            <span>منو</span>
-                        </a>
-                        <!-- ***** Menu End ***** -->
-                    </nav>
-                </div>
+<!-- ***** Header Area Start ***** -->
+<header class="header-area header-sticky">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <nav class="main-nav">
+                    <!-- ***** Logo Start ***** -->
+                    <a href="index.html" class="logo">
+                        <img src={% static 'images/logo.png' %}>
+                    </a>
+                    <!-- ***** Logo End ***** -->
+                    <!-- ***** Menu Start ***** -->
+                    <ul class="nav">
+                        <li class="scroll-to-section">
+                            <a href="{% url 'home' %}"
+                               class="{% if request.resolver_match.url_name == 'home' %}active{% endif %}">
+                                خانه
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="{% url 'product_page' %}"
+                               class="{% if request.resolver_match.url_name == 'product_page' %}active{% endif %}">
+                                محصولات
+                            </a>
+                        </li>
+
+                        <li class="scroll-to-section">
+                            <a href="#men">مردان</a>
+                        </li>
+
+                        <li class="scroll-to-section">
+                            <a href="#women">زنان</a>
+                        </li>
+
+                        <li class="scroll-to-section">
+                            <a href="#kids">بچگانه</a>
+                        </li>
+
+                        <li class="submenu">
+                            <a href="#">صفحات</a>
+                            <ul>
+                                <li>
+                                    <a href="{% url 'about_us' %}"
+                                       class="{% if request.resolver_match.url_name == 'about_us' %}active{% endif %}">
+                                        درباره ما
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a href="single-product.html">
+                                        محصول منفرد
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a href="{% url 'contact_us' %}"
+                                       class="{% if request.resolver_match.url_name == 'contact_us' %}active{% endif %}">
+                                        تماس با ما
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <a class='menu-trigger'>
+                        <span>منو</span>
+                    </a>
+                    <!-- ***** Menu End ***** -->
+                </nav>
             </div>
         </div>
-    </header>
-    <!-- ***** Header Area End ***** -->
+    </div>
+</header>
+<!-- ***** Header Area End ***** -->

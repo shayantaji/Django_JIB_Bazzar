@@ -6,13 +6,11 @@ from .models import Product, ProductCategory
 
 class ProductAdmin(admin.ModelAdmin):
 
-    list_filter = ['category', 'is_active']
+    list_filter = ['category', 'is_active',]
     list_display = ['title', 'price', 'is_active']
     list_editable = ['price', 'is_active']
 
-    # prepopulated_fields = {
-    #     'slug': ['title']
-    # }
+
 
 
 class ProductCategoryAdmin(admin.ModelAdmin):
