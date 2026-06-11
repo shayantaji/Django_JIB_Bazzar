@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'About_us_page',
     #external_module
     'django_render_partial',
+    'sorl.thumbnail'
 ]
 
 MIDDLEWARE = [
