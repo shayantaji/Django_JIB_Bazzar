@@ -1,0 +1,30 @@
+{% load thumbnail %}
+{% load poll_extras %}
+
+<div class="col-lg-4">
+                        <div class="item">
+                            <div class="thumb">
+                                <div class="hover-content">
+                                    <ul>
+                                        <li><a href="{{ product.get_absolute_url }}"><i class="fa fa-eye"></i></a></li>
+                                        <li><a href="single-product.html"><i class="fa fa-shopping-cart"></i></a></li>
+                                    </ul>
+                                </div>
+                                {% thumbnail product.image "290x306" quality=90 crop="center" as im %}
+                                    <img src="{{ im.url }}">
+                                {% endthumbnail %}
+                            </div>
+                            <div class="down-content">
+                                <h4><a href="{{ product.get_absolute_url }}">{{ product.title }}</a></h4>
+                                <span>{{ product.price|three_digits_currency }}</span>
+                                <ul class="stars">
+
+                                    {% for star in product.star_range %}
+                                        <li><i class="fa fa-star"></i></li>
+                                    {% endfor %}
+
+
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
