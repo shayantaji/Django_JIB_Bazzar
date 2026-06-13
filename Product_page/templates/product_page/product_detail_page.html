@@ -1,7 +1,7 @@
 {% extends 'main/_layout.html' %}
-{% block title %}
 {% load thumbnail %}
-
+{% block title %}
+    هکزاشاپ-جزیات محصول
 {% endblock %}
 {% block content %}
     <!-- ***** Main Banner Area Start ***** -->
@@ -26,18 +26,18 @@
             <div class="row">
                 <div class="col-lg-8">
                     <div class="left-images">
-                        {% thumbnail product.image "610x317" quality=90 crop="center" as im %}
-                            <img src="{{ im.url }}">
-                        {% endthumbnail %}
-                        {% thumbnail product.image "610x317" quality=90 crop="center" as im %}
-                            <img src="{{ im.url }}">
-                        {% endthumbnail %}
+                        {% for img in product.gallery.all %}
+                            {% thumbnail img.image "600x290" quality=90 crop="center" as im %}
+                                <img src="{{ im.url }}">
+                            {% endthumbnail %}
+                        {% endfor %}
+
                     </div>
                 </div>
                 <div class="col-lg-4">
                     <div class="right-content">
-                        <h4>{{ product.title}}</h4>
-                        <span class="price">{{ product.price}}</span>
+                        <h4>{{ product.title }}</h4>
+                        <span class="price">{{ product.price }}</span>
                         <ul class="stars">
                             <li><i class="fa fa-star"></i></li>
                             <li><i class="fa fa-star"></i></li>
@@ -45,14 +45,14 @@
                             <li><i class="fa fa-star"></i></li>
                             <li><i class="fa fa-star"></i></li>
                         </ul>
-                        <span>{{ product.short_description}} </span>
+                        <span>{{ product.short_description }} </span>
                         <div class="quote">
                             <i class="fa fa-quote-right"></i>
-                            <p>{{ product.description}}</p>
+                            <p>{{ product.description }}</p>
                         </div>
                         <div class="quantity-content">
                             <div class="left-content">
-                                <h6>{{ product.inventory}}</h6>
+                                <h6>{{ product.inventory }}</h6>
                             </div>
                             <div class="right-content">
                                 <div class="quantity buttons_added">
