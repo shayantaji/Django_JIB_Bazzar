@@ -1,3 +1,4 @@
+from django.core.validators import MinValueValidator, MaxValueValidator
 from django.db import models
 from django.urls import reverse
 from  slugify import slugify
@@ -43,6 +44,27 @@ class Product(models.Model):
 
     created_date = models.DateTimeField(auto_now_add=True,verbose_name='تاریخ ایجاد محصول')
 
+    RATING_CHOICES = [
+        (0, '0'),
+        (1, '1'),
+        (2, '2'),
+        (3, '3'),
+        (4, '4'),
+        (5, '5'),
+    ]
+
+    rating = models.PositiveSmallIntegerField(
+        choices=RATING_CHOICES,
+        default=0,
+        verbose_name='امتیاز محصول',
+        null=True,
+        blank=True
+    )
+
+    @property
+    def star_range(self):
+        return range(self.rating)
+
     def get_absolute_url(self):
         return reverse('product-detail', args=[self.slug])
 
@@ -54,9 +76,6 @@ class Product(models.Model):
             self.slug = slugify(self.title)
         super().save(*args, **kwargs)
 
-
     class Meta:
         verbose_name = 'محصول'
         verbose_name_plural = 'محصولات'
-
-

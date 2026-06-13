@@ -9,6 +9,8 @@ class ProductPage(ListView):
     model = Product
     template_name = "product_page/product_page.html"
     context_object_name = "products"
+    ordering = ['-rating']
+    paginate_by = 6
 
     def get_queryset(self):
         base_query = super(ProductPage, self).get_queryset()
