@@ -79,3 +79,18 @@ class Product(models.Model):
     class Meta:
         verbose_name = 'محصول'
         verbose_name_plural = 'محصولات'
+
+class ProductGallery(models.Model):
+    product = models.ForeignKey(
+        Product,
+        on_delete=models.CASCADE,
+        related_name='gallery'
+    )
+    image = models.ImageField(upload_to='images/products/product_gallery/')
+
+    def __str__(self):
+        return f" گالری {self.product.title}"
+
+    class Meta:
+        verbose_name = 'گالری'
+        verbose_name_plural = 'گالری محصولات'
