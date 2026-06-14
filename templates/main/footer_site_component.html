@@ -1,59 +1,51 @@
 {% load static %}
- <!-- ***** Footer Start ***** -->
-    <footer>
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-3">
-                    <div class="first-item text-right">
-                        <div class="logo">
-                            <img src={% static 'images/white-logo.png' %} alt="">
-                        </div>
-                        <ul>
-                            <li><a href="#">ایران ، تهران ، کریم خان</a></li>
-                            <li><a href="#">hexashop@company.com</a></li>
-                            <li><a href="#">021-020-0340</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-lg-3 text-right">
-                    <h4>خريد و دسته بندی</h4>
+{% load thumbnail %}
+<!-- ***** Footer Start ***** -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3">
+                <div class="first-item text-right">
+{#                    <div class="logo">#}
+{#                        {% thumbnail site_setting.site_logo "195x85" quality=90 crop="center" as im %}#}
+{#                            <img src="{{ im.url }}">#}
+{#                        {% endthumbnail %}#}
+{#                    </div>#}
                     <ul>
-                        <li><a href="#">فروش مردانه</a></li>
-                        <li><a href="#">فروش زنانه</a></li>
-                        <li><a href="#">فروش کودکانه</a></li>
+                        <li><a href="#">{{ site_setting.address }}</a></li>
+                        <li><a href="#">{{ site_setting.email }}</a></li>
+                        <li><a href="#">{{ site_setting.phone }}</a></li>
                     </ul>
                 </div>
+            </div>
+
+            {% for footer_box in footer_links %}
                 <div class="col-lg-3 text-right">
-                    <h4>لینک های مفید</h4>
+                    <h4>{{ footer_box.title }}</h4>
+
                     <ul>
-                        <li><a href="#">خانه</a></li>
-                        <li><a href="#">درباره ما</a></li>
-                        <li><a href="#">راهنمایی</a></li>
-                        <li><a href="#">تماس با ما</a></li>
+                        {% for link in footer_box.footerlink_set.all %}
+                            <li>
+                                <a href="{{ link.url }}">
+                                    {{ link.title }}
+                                </a>
+                            </li>
+                        {% endfor %}
                     </ul>
                 </div>
-                <div class="col-lg-3 text-right">
-                    <h4>راهنمایی و اطلاعات</h4>
+            {% endfor %}
+
+            <div class="col-lg-12">
+                <div class="under-footer">
+                    <p>
+                        {{ site_setting.copy_right }}
+                    </p>
                     <ul>
-                        <li><a href="#">راهنمایی</a></li>
-                        <li><a href="#">سوالات متداول</a></li>
-                        <li><a href="#">حمل دریایی</a></li>
-                        <li><a href="#">شناسه پیگیری</a></li>
+                        <li><a href="{{ site_setting.github_url }}"><i class="fa fa-github"></i></a></li>
+                        <li><a href="{{ site_setting.instagram_url }}"><i class="fa fa-instagram"></i></a></li>
                     </ul>
-                </div>
-                <div class="col-lg-12">
-                    <div class="under-footer">
-                        <p>
-                            کلیه حقوق محفوظ است
-                        </p>
-                        <ul>
-                            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                            <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                            <li><a href="#"><i class="fa fa-behance"></i></a></li>
-                        </ul>
-                    </div>
                 </div>
             </div>
         </div>
-    </footer>
+    </div>
+</footer>

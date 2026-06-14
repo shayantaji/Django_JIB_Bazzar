@@ -1,4 +1,5 @@
 {% load static %}
+{% load thumbnail %}
 <!-- ***** Preloader Start ***** -->
 <div id="preloader">
     <div class="jumper">
@@ -18,7 +19,9 @@
                 <nav class="main-nav">
                     <!-- ***** Logo Start ***** -->
                     <a href="{% url 'home' %}" class="logo">
-                        <img src={% static 'images/logo.png' %}>
+                         {% thumbnail  site_setting.site_logo "195x80" quality=90 crop="left" as im %}
+                                <img src="{{ im.url }}">
+                            {% endthumbnail %}
                     </a>
                     <!-- ***** Logo End ***** -->
                     <!-- ***** Menu Start ***** -->
