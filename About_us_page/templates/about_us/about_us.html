@@ -1,7 +1,7 @@
 {% extends 'main/_layout.html' %}
 {% load static %}
 {% block title %}
-    هگزاشاپ - درباره ما
+    جیب بازار - درباره ما
 {% endblock %}
 {% block content %}
 	 <!-- ***** Main Banner Area Start ***** -->
@@ -10,8 +10,8 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="inner-content">
-                        <h2>درباره شرکت ما</h2>
-                        <span>لورم ایپسوم متن ساختگی با تولید سادگی</span>
+                        <h2>درباره فروشگاه</h2>
+                        <span>{{ site_setting.about_us_text }}</span>
                     </div>
                 </div>
             </div>
@@ -25,145 +25,143 @@
             <div class="row">
                 <div class="col-lg-6">
                     <div class="left-image">
-                        <img src={% static 'images/about-left-image.jpg' %} alt="">
+                        <img src={{ site_setting.site_logo.url }} alt="">
                     </div>
                 </div>
                 <div class="col-lg-6">
                     <div class="right-content text-right">
                         <h4>درباره ما و مهارت های ما</h4>
-                        <span>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. </span>
+                        <span>{{ site_setting.about_us_text }} </span>
                         <div class="quote">
-                            <i class="fa fa-quote-right"></i><p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله.</p>
+                            <i class="fa fa-quote-right"></i><p>{{ site_setting.copy_right }}</p>
                         </div>
                         <p>
-                            لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطر آن چنان که لازم است.
+                            {{ site_setting.about_us_text }}
                         </p>
                         <ul>
-                            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                            <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                            <li><a href="#"><i class="fa fa-behance"></i></a></li>
+                            <li><a href="{{site_setting.github_url}}"><i class="fa fa-github"></i></a></li>
+                            <li><a href="{{ site_setting.instagram_url }}"><i class="fa fa-instagram"></i></a></li>
                         </ul>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <!-- ***** About Area Ends ***** -->
-
-    <!-- ***** Our Team Area Starts ***** -->
-    <section class="our-team">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="section-heading">
-                        <h2>تیم شگفت انگیز ما</h2>
-                        <span>جزئیات مربوط به جزئیات همان چیزی است که هگزاشوپ را با مضامین دیگر متفاوت می کند.</span>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="team-item">
-                        <div class="thumb">
-                            <div class="hover-effect">
-                                <div class="inner-content">
-                                    <ul>
-                                        <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                                        <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                                        <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                                        <li><a href="#"><i class="fa fa-behance"></i></a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <img src={% static 'images/team-member-01.jpg' %}>
-                        </div>
-                        <div class="down-content">
-                            <h4>سارا پاشا</h4>
-                            <span>مراقب محصول</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="team-item">
-                        <div class="thumb">
-                            <div class="hover-effect">
-                                <div class="inner-content">
-                                    <ul>
-                                        <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                                        <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                                        <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                                        <li><a href="#"><i class="fa fa-behance"></i></a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <img src={% static 'images/team-member-02.jpg' %}>
-                        </div>
-                        <div class="down-content">
-                            <h4>علی صفایی</h4>
-                            <span>مراقب محصول</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="team-item">
-                        <div class="thumb">
-                            <div class="hover-effect">
-                                <div class="inner-content">
-                                    <ul>
-                                        <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                                        <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                                        <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                                        <li><a href="#"><i class="fa fa-behance"></i></a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <img src={% static 'images/team-member-03.jpg' %}>
-                        </div>
-                        <div class="down-content">
-                            <h4>نیما مرادی</h4>
-                            <span>مراقب محصول</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- ***** Our Team Area Ends ***** -->
-
-    <!-- ***** Services Area Starts ***** -->
-    <section class="our-services">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="section-heading">
-                        <h2>خدمات ما</h2>
-                        <span>جزئیات مربوط به جزئیات همان چیزی است که هگزاشوپ را با مضامین دیگر متفاوت می کند.</span>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="service-item">
-                        <h4>لورم ساختگی با تولید</h4>
-                        <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. </p>
-                        <img src={% static 'images/service-01.jpg' %} alt="">
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="service-item">
-                        <h4>تولید سادگی نامفهوم</h4>
-                        <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. </p>
-                        <img src={% static 'images/service-02.jpg' %} alt="">
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="service-item">
-                        <h4>لورم ایپسوم متن</h4>
-                        <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. </p>
-                        <img src={% static 'images/service-03.jpg' %} alt="">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- ***** Services Area Ends ***** -->
+{#    <!-- ***** About Area Ends ***** -->#}
+{##}
+{#    <!-- ***** Our Team Area Starts ***** -->#}
+{#    <section class="our-team">#}
+{#        <div class="container">#}
+{#            <div class="row">#}
+{#                <div class="col-lg-12">#}
+{#                    <div class="section-heading">#}
+{#                        <h2>تیم شگفت انگیز ما</h2>#}
+{#                        <span>جزئیات مربوط به جزئیات همان چیزی است که هگزاشوپ را با مضامین دیگر متفاوت می کند.</span>#}
+{#                    </div>#}
+{#                </div>#}
+{#                <div class="col-lg-4">#}
+{#                    <div class="team-item">#}
+{#                        <div class="thumb">#}
+{#                            <div class="hover-effect">#}
+{#                                <div class="inner-content">#}
+{#                                    <ul>#}
+{#                                        <li><a href="#"><i class="fa fa-facebook"></i></a></li>#}
+{#                                        <li><a href="#"><i class="fa fa-twitter"></i></a></li>#}
+{#                                        <li><a href="#"><i class="fa fa-linkedin"></i></a></li>#}
+{#                                        <li><a href="#"><i class="fa fa-behance"></i></a></li>#}
+{#                                    </ul>#}
+{#                                </div>#}
+{#                            </div>#}
+{#                            <img src={% static 'images/team-member-01.jpg' %}>#}
+{#                        </div>#}
+{#                        <div class="down-content">#}
+{#                            <h4>سارا پاشا</h4>#}
+{#                            <span>مراقب محصول</span>#}
+{#                        </div>#}
+{#                    </div>#}
+{#                </div>#}
+{#                <div class="col-lg-4">#}
+{#                    <div class="team-item">#}
+{#                        <div class="thumb">#}
+{#                            <div class="hover-effect">#}
+{#                                <div class="inner-content">#}
+{#                                    <ul>#}
+{#                                        <li><a href="#"><i class="fa fa-facebook"></i></a></li>#}
+{#                                        <li><a href="#"><i class="fa fa-twitter"></i></a></li>#}
+{#                                        <li><a href="#"><i class="fa fa-linkedin"></i></a></li>#}
+{#                                        <li><a href="#"><i class="fa fa-behance"></i></a></li>#}
+{#                                    </ul>#}
+{#                                </div>#}
+{#                            </div>#}
+{#                            <img src={% static 'images/team-member-02.jpg' %}>#}
+{#                        </div>#}
+{#                        <div class="down-content">#}
+{#                            <h4>علی صفایی</h4>#}
+{#                            <span>مراقب محصول</span>#}
+{#                        </div>#}
+{#                    </div>#}
+{#                </div>#}
+{#                <div class="col-lg-4">#}
+{#                    <div class="team-item">#}
+{#                        <div class="thumb">#}
+{#                            <div class="hover-effect">#}
+{#                                <div class="inner-content">#}
+{#                                    <ul>#}
+{#                                        <li><a href="#"><i class="fa fa-facebook"></i></a></li>#}
+{#                                        <li><a href="#"><i class="fa fa-twitter"></i></a></li>#}
+{#                                        <li><a href="#"><i class="fa fa-linkedin"></i></a></li>#}
+{#                                        <li><a href="#"><i class="fa fa-behance"></i></a></li>#}
+{#                                    </ul>#}
+{#                                </div>#}
+{#                            </div>#}
+{#                            <img src={% static 'images/team-member-03.jpg' %}>#}
+{#                        </div>#}
+{#                        <div class="down-content">#}
+{#                            <h4>نیما مرادی</h4>#}
+{#                            <span>مراقب محصول</span>#}
+{#                        </div>#}
+{#                    </div>#}
+{#                </div>#}
+{#            </div>#}
+{#        </div>#}
+{#    </section>#}
+{#    <!-- ***** Our Team Area Ends ***** -->#}
+{##}
+{#    <!-- ***** Services Area Starts ***** -->#}
+{#    <section class="our-services">#}
+{#        <div class="container">#}
+{#            <div class="row">#}
+{#                <div class="col-lg-12">#}
+{#                    <div class="section-heading">#}
+{#                        <h2>خدمات ما</h2>#}
+{#                        <span>جزئیات مربوط به جزئیات همان چیزی است که هگزاشوپ را با مضامین دیگر متفاوت می کند.</span>#}
+{#                    </div>#}
+{#                </div>#}
+{#                <div class="col-lg-4">#}
+{#                    <div class="service-item">#}
+{#                        <h4>لورم ساختگی با تولید</h4>#}
+{#                        <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. </p>#}
+{#                        <img src={% static 'images/service-01.jpg' %} alt="">#}
+{#                    </div>#}
+{#                </div>#}
+{#                <div class="col-lg-4">#}
+{#                    <div class="service-item">#}
+{#                        <h4>تولید سادگی نامفهوم</h4>#}
+{#                        <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. </p>#}
+{#                        <img src={% static 'images/service-02.jpg' %} alt="">#}
+{#                    </div>#}
+{#                </div>#}
+{#                <div class="col-lg-4">#}
+{#                    <div class="service-item">#}
+{#                        <h4>لورم ایپسوم متن</h4>#}
+{#                        <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. </p>#}
+{#                        <img src={% static 'images/service-03.jpg' %} alt="">#}
+{#                    </div>#}
+{#                </div>#}
+{#            </div>#}
+{#        </div>#}
+{#    </section>#}
+{#    <!-- ***** Services Area Ends ***** -->#}
 
     <!-- ***** Subscribe Area Starts ***** -->
     <div class="subscribe">
@@ -171,8 +169,8 @@
             <div class="row">
                 <div class="col-lg-8">
                     <div class="section-heading text-right">
-                        <h2>با عضویت در خبرنامه ما می توانید 30 درصد تخفیف دریافت کنید</h2>
-                        <span>جزئیات تا جزئیات چیزی است که هگزاشاپ را از تم های دیگر متمایز می کند.</span>
+                        <h2>با عضویت در فروشگاه ما می توانید 30 درصد تخفیف دریافت کنید</h2>
+                        <span>جزئیات چیزی است که جبب بازار را از فروشگاه های دیگر متمایز می کند.</span>
                     </div>
                     <form id="subscribe" action="" method="get">
                         <div class="row">
@@ -198,16 +196,16 @@
                     <div class="row">
                         <div class="col-6 text-right">
                             <ul>
-                                <li>فروشگاه آدرس:<br><span>ایران ، تهران</span></li>
-                                <li>تلفن:<br><span>021-020-0340</span></li>
-                                <li>دفتر آدرس:<br><span>کریم خان</span></li>
+                                <li>فروشگاه آدرس:<br><span>{{ site_setting.address }}</span></li>
+                                <li>تلفن:<br><span>{{ site_setting.phone }}</span></li>
+                                <li>دفتر آدرس:<br><span>{{ site_setting.address }}</span></li>
                             </ul>
                         </div>
                         <div class="col-6 text-right">
                             <ul>
-                                <li>ساعات کاری:<br><span>07:30 AM - 9:30 PM Daily</span></li>
-                                <li>ایمیل:<br><span>info@company.com</span></li>
-                                <li>شبکه های مجازی:<br><span><a href="#">فیسبوک</a>, <a href="#">اینستاگرام</a>, <a href="#">بیهانس</a>, <a href="#">لینکدین</a></span></li>
+                                <li>ساعات کاری:<br><span>{{ site_setting.working_hours}}</span></li>
+                                <li>ایمیل:<br><span>{{ site_setting.email}}</span></li>
+                                <li>شبکه های مجازی:<br><span> <a href="{{ site_setting.instagram_url }}">اینستاگرام</a>, <a href="{{ site_setting.github_url }}">گیت هاب</a></span></li>
                             </ul>
                         </div>
                     </div>
