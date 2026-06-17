@@ -14,9 +14,12 @@ class SiteSetting(models.Model):
     linkedin_url = models.CharField(blank=True, null=True, verbose_name='لینک لینکدین')
     site_logo = models.ImageField(upload_to='images/site-setting/', verbose_name='لوگو سایت')
     favicon = models.ImageField(upload_to='images/site-setting/', blank=True, null=True, verbose_name='فاوآیکون سایت')
-    copy_right = models.TextField(verbose_name='متن کپی رایت')
-    about_us_text = models.TextField(verbose_name='متن درباره ما')
-    is_main_setting = models.BooleanField(default=False, verbose_name='تنظیمات اصلی')
+    copy_right = models.TextField(verbose_name='متن کپی رایت', blank=True, null=True)
+    about_us_text = models.TextField(verbose_name='متن تیتر درباره ما', blank=True, null=True)
+    about_us_super_text = models.TextField(verbose_name='متن اصلی درباره ما',null=True, blank=True)
+    site_slogan = models.CharField(max_length=300, verbose_name='شعار سایت', blank=True, null=True)
+    contact_us_text = models.TextField(verbose_name='متن تیتر تماس با ما', blank=True, null=True)
+    is_main_setting = models.BooleanField(default=False, verbose_name='تنظیمات اصلی',max_length=250)
     working_hours = models.CharField(max_length=300,verbose_name='ساعت کاری')
 
     def __str__(self):
@@ -49,3 +52,17 @@ class FooterLink(models.Model):
 
     def __str__(self):
         return self.title
+
+class SiteServices(models.Model):
+    site = models.ForeignKey(SiteSetting, on_delete=models.CASCADE)
+    title = models.CharField(max_length=200, verbose_name='عنوان خدمات')
+    details = models.TextField(verbose_name='متن خدمات')
+    image = models.ImageField(upload_to='images/site-services/',verbose_name='تصویر خدمات')
+
+
+    def __str__(self):
+        return self.title
+
+    class Meta:
+        verbose_name = 'خدمات'
+        verbose_name_plural = 'خدمات سایت'
