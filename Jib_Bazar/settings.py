@@ -135,22 +135,11 @@ STATICFILES_DIRS = [ BASE_DIR / 'static' ]
 MEDIA_ROOT = BASE_DIR / 'uploads'
 MEDIA_URL = '/medias/'
 
-# default  jalali settings (optional)
-JALALI_DATE_DEFAULTS = {
-   # if change it to true then all dates of the list_display will convert to the Jalali.
-   'LIST_DISPLAY_AUTO_CONVERT': False,
-   'Strftime': {
-        'date': '%y/%m/%d',
-        'datetime': '%H:%M:%S _ %y/%m/%d',
-    },
-    'Static': {
-        'js': [
-            'admin/js/django_jalali.min.js',
-        ],
-        'css': {
-            'all': [
-              'admin/css/django_jalali.min.css',
-            ]
-        }
-    },
-}
+#email_site  config
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'onionarchitecturemvc@gmail.com'
+EMAIL_HOST_PASSWORD = 'djangotoplearn@pass'
+EMAIL_PORT = 587
