@@ -1,11 +1,14 @@
-from django.contrib.auth.views import LoginView
-from django.template.defaultfilters import first
-from django.urls import reverse_lazy
+from django.db.models import Q
+from django.http import Http404
+from django.shortcuts import redirect
+from django.urls import reverse_lazy, reverse
 from django.utils.crypto import get_random_string
+from django.views import View
 from django.views.generic import FormView
-from account_module.forms import RegisterForm
+from account_module.forms import RegisterForm, LoginForm
 from account_module.models import User
 from utils.email_service import send_email
+from django.contrib.auth import login, logout
 
 
 # Create your views here.
@@ -37,5 +40,65 @@ class RegisterView(FormView):
         send_email('فعالسازی حساب کاربری', new_user.email, {'user': new_user}, 'emails/email_active_code.html')
         return super().form_valid(form)
 
+
 class LoginView(FormView):
-    pass
+    template_name = 'account_module/login.html'
+    form_class = LoginForm
+    success_url = reverse_lazy('home')
+
+    def form_valid(self, form):
+
+        email_username = form.cleaned_data['email_username']
+        password = form.cleaned_data['password']
+
+        user = User.objects.filter(
+            Q(username__iexact=email_username) |
+            Q(email__iexact=email_username)
+        ).first()
+
+        if user is None:
+            form.add_error(
+                'email_username',
+                'کاربری بااین نام کاربری یا ایمیل یافت نشد'
+            )
+            return self.form_invalid(form)
+
+        if not user.is_active:
+            form.add_error(
+                'email_username',
+                'حساب کاربری شما هنوز فعال نشده است'
+            )
+            return self.form_invalid(form)
+
+        if not user.check_password(password):
+            form.add_error(
+                'password',
+                'رمز عبور وارد شده صحیح نیست'
+            )
+            return self.form_invalid(form)
+
+        login(self.request, user)
+
+        return super().form_valid(form)
+
+    def form_invalid(self, form):
+        print(form.errors)
+        return super().form_invalid(form)
+
+
+
+class ActivateAccountView(View):
+    def get(self, request, email_active_code):
+        user: User = User.objects.filter(email_active_code__iexact=email_active_code).first()
+        if user is not None:
+            if not user.is_active:
+                user.is_active = True
+                user.email_active_code = get_random_string(72)
+                user.save()
+                # todo: show success message to user
+                return redirect(reverse('home'))
+            else:
+                # todo: show your account was activated message to user
+                pass
+
+        raise Http404

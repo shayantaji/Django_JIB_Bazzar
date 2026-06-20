@@ -6,40 +6,86 @@
 
 {% block content %}
 
-<body class="rtl" style="padding-top: 50px">
-	<div class="limiter">
-		<div class="container-login100">
-			<div class="wrap-login100">
-				<div class="login100-form-title" style="background-image: url({% static 'login_register/pics/bg-01.jpg' %});">
-					<span class="login100-form-title-1">فرم ورود</span>
-				</div>
-				<form class="login100-form validate-form">
-					<div class="wrap-input100 validate-input m-b-26" data-validate="لطفا نام کاربری خود را وارد کنید!">
-						<span class="label-input100">نام کاربری</span>
-						<input class="input100" type="text" name="username" placeholder="نام کاربری خود را وارد کنید">
-						<span class="focus-input100"></span>
-					</div>
-					<div class="wrap-input100 validate-input m-b-18" data-validate = "لطفا رمز عبور خود را وارد کنید!">
-						<span class="label-input100">رمز عبور</span>
-						<input class="input100" type="password" name="pass" placeholder="رمز عبور خود را وارد کنید">
-						<span class="focus-input100"></span>
-					</div>
-					<div class="flex-sb-m w-full p-b-30">
-						<div>
-							<a href="#" class="txt1">رمز عبور خود را فراموش کرده اید؟</a>
-						</div>
-						<div class="contact100-form-checkbox">
-							<input class="input-checkbox100" id="ckb1" type="checkbox" name="remember-me">
-							<label class="label-checkbox100" for="ckb1">مرا بخاطر بسپار</label>
-						</div>
-					</div>
-					<div class="container-login100-form-btn">
-						<button class="login100-form-btn">وارد شوید</button>
-					</div>
+    <body class="rtl" style="padding-top: 50px">
+    <div class="limiter">
+        <div class="container-login100">
+            <div class="wrap-login100">
+                <div class="login100-form-title"
+                     style="background-image: url({% static 'login_register/pics/bg-01.jpg' %});">
+                    <span class="login100-form-title-1">فرم ورود</span>
+                </div>
+                <form class="login100-form validate-form" action="{% url 'login' %}" method="post">
 
-				</form>
-			</div>
-		</div>
-	</div>
+                    {% csrf_token %}
+
+                    <!-- NON FIELD ERROR -->
+                    {% if form.non_field_errors %}
+                        <div style="color:red; font-size:12px; margin-bottom:10px;">
+                            {{ form.non_field_errors.0 }}
+                        </div>
+                    {% endif %}
+
+                    <!-- EMAIL / USERNAME ERROR -->
+                    {% if form.email_username.errors %}
+                        <div style="color:red; font-size:12px;">
+                            {{ form.email_username.errors.0 }}
+                        </div>
+                    {% endif %}
+
+                    <div class="wrap-input100 m-b-26">
+                        <span class="label-input100">
+                              ایمیل یا نام کاربری
+                        </span>
+
+                        {{ form.email_username }}
+
+                        <span class="focus-input100"></span>
+                    </div>
+
+                    {% if form.password.errors %}
+                        <div style="color:red; font-size:12px;">
+                            {{ form.password.errors.0 }}
+                        </div>
+                    {% endif %}
+
+                    <div class="wrap-input100 m-b-18">
+                         <span class="label-input100">
+                            رمز عبور
+                         </span>
+
+                        {{ form.password }}
+
+                        <span class="focus-input100"></span>
+                    </div>
+
+                    <div class="flex-sb-m w-full p-b-30">
+                        <div>
+                            <a href="#" class="txt1">
+                                رمز عبور خود را فراموش کرده اید؟
+                            </a>
+                        </div>
+
+                        <div class="contact100-form-checkbox">
+                            <input class="input-checkbox100"
+                                   id="ckb1"
+                                   type="checkbox"
+                                   name="remember-me">
+
+                            <label class="label-checkbox100" for="ckb1">
+                                مرا بخاطر بسپار
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="container-login100-form-btn">
+                        <button type="submit" class="login100-form-btn">
+                            وارد شوید
+                        </button>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
 
 {% endblock %}
