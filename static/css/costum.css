@@ -1,0 +1,55 @@
+.auth-icons {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.auth-btn {
+    padding: 6px 10px;
+    border-radius: 6px;
+    font-size: 13px;
+    transition: 0.3s;
+}
+
+.auth-btn i {
+    margin-left: 5px;
+}
+
+/* ورود */
+.auth-btn.login {
+    color: #fff;
+    background: #28a745;
+}
+
+/* ثبت نام */
+.auth-btn.register {
+    color: #fff;
+    background: #007bff;
+}
+
+/* خروج */
+.auth-btn.logout {
+    color: #fff;
+    background: #dc3545;
+}
+
+.auth-btn:hover {
+    opacity: 0.8;
+}
+.auth-btn.login,
+.auth-btn.register,
+.auth-btn.logout {
+  background: transparent !important;
+  color: #2a2a2a !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+.auth-icons a {
+    opacity: 1;
+    transition: opacity 0.2s ease;
+}
+
+/* فقط خود همونی که روش هست */
+.auth-icons a:hover {
+    opacity: 0.6;
+}

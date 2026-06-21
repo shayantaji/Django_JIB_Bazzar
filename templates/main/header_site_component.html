@@ -19,9 +19,9 @@
                 <nav class="main-nav">
                     <!-- ***** Logo Start ***** -->
                     <a href="{% url 'home' %}" class="logo">
-                         {% thumbnail  site_setting.site_logo "195x80" quality=90 crop="left" as im %}
-                                <img src="{{ im.url }}">
-                            {% endthumbnail %}
+                        {% thumbnail site_setting.site_logo "195x80" quality=90 crop="left" as im %}
+                            <img src="{{ im.url }}">
+                        {% endthumbnail %}
                     </a>
                     <!-- ***** Logo End ***** -->
                     <!-- ***** Menu Start ***** -->
@@ -76,6 +76,33 @@
                                 </li>
                             </ul>
                         </li>
+
+                        <!-- 🔥 AUTH ICONS -->
+                        <li class="auth-icons">
+
+                            {% if user.is_authenticated %}
+
+                                <a href="{% url 'logout' %}" class="auth-btn logout">
+                                    <i class="fa fa-sign-out"></i>
+                                    خروج
+                                </a>
+
+                            {% else %}
+
+                                <a href="{% url 'login' %}" class="auth-btn login">
+                                    <i class="fa fa-sign-in"></i>
+                                    ورود
+                                </a>
+
+                                <a href="{% url 'register' %}" class="auth-btn register">
+                                    <i class="fa fa-user-plus"></i>
+                                    ثبت نام
+                                </a>
+
+                            {% endif %}
+
+                        </li>
+
                     </ul>
                     <a class='menu-trigger'>
                         <span>منو</span>
