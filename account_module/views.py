@@ -1,11 +1,13 @@
+from django.contrib.auth.forms import PasswordResetForm
 from django.db.models import Q
 from django.http import Http404
 from django.shortcuts import redirect
+from django.template.base import kwarg_re
 from django.urls import reverse_lazy, reverse
 from django.utils.crypto import get_random_string
 from django.views import View
 from django.views.generic import FormView
-from account_module.forms import RegisterForm, LoginForm
+from account_module.forms import RegisterForm, LoginForm, ForgotPasswordForm, ResetPasswordForm
 from account_module.models import User
 from utils.email_service import send_email
 from django.contrib.auth import login, logout
@@ -23,9 +25,15 @@ class RegisterView(FormView):
         form_email = form.cleaned_data['email']
         form_username = form.cleaned_data['user_name']
         form_password = form.cleaned_data['password']
-        check_user : bool = User.objects.filter(email__iexact=form_email).exists()
-        if check_user:
-            form.add_error('email','کاربری با این ایمیل وجود دارد')
+        check_user_email = User.objects.filter(email__iexact=form_email).exists()
+        check_user_username = User.objects.filter(username__iexact=form_username).exists()
+
+        if check_user_email:
+            form.add_error('email', 'این ایمیل قبلاً استفاده شده')
+            return self.form_invalid(form)
+
+        if check_user_username:
+            form.add_error('user_name', 'این نام کاربری قبلاً استفاده شده')
             return self.form_invalid(form)
         new_user = User(
             first_name=form_username,
@@ -66,7 +74,7 @@ class LoginView(FormView):
         if not user.is_active:
             form.add_error(
                 'email_username',
-                'حساب کاربری شما هنوز فعال نشده است'
+                'حساب کاربری شما هنوز فعال نشده است جهت فعالسازی به ایمیلتان مراجعه کنید'
             )
             return self.form_invalid(form)
 
@@ -85,6 +93,10 @@ class LoginView(FormView):
         print(form.errors)
         return super().form_invalid(form)
 
+class LogoutView(View):
+    def get(self, request):
+        logout(request)
+        return redirect(reverse('home'))
 
 
 class ActivateAccountView(View):
@@ -102,7 +114,39 @@ class ActivateAccountView(View):
                 pass
         raise Http404
 
-class LogoutView(View):
-    def get(self, request):
-        logout(request)
-        return redirect(reverse('home'))
+
+
+class ForgotPasswordView(FormView):
+    template_name = 'account_module/forgot_password.html'
+    success_url = reverse_lazy('home')
+    form_class = ForgotPasswordForm
+    def form_valid(self, form):
+        email = form.cleaned_data['email']
+        user: User = User.objects.filter(email__iexact=email).first()
+        if user is  None:
+            form.add_error('email','کاربری با ایمیل وارد شده وجود ندارد')
+            return self.form_invalid(form)
+
+        send_email('بازیابی کلمه عبور', user.email, {'user': user}, 'emails/forgot_password.html')
+        return super().form_valid(form)
+
+
+class PasswordResetView(FormView):
+    template_name = 'account_module/reset_password.html'
+    success_url = reverse_lazy('login')
+    form_class = ResetPasswordForm
+    def form_valid(self, form):
+
+        email_active_code = self.kwargs.get('email_active_code')
+        password = form.cleaned_data['password']
+        user: User = User.objects.filter(email_active_code__iexact=email_active_code).first()
+        if user is None:
+            form.add_error(None,'لینک بازیابی رمز عبور معتبر نمی‌باشد. لطفاً مجدداً درخواست بازیابی رمز عبور ثبت کنید')
+            return  self.form_invalid(form)
+        user.set_password(password)
+        user.email_active_code = get_random_string(72)
+        user.save()
+        return super().form_valid(form)
+
+
+

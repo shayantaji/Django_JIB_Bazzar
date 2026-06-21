@@ -104,35 +104,59 @@ class LoginForm(forms.Form):
 class ForgotPasswordForm(forms.Form):
     email = forms.EmailField(
         label='ایمیل',
-        widget=forms.EmailInput(),
+        widget=forms.EmailInput(attrs={
+            'class': 'input100',
+            'placeholder': 'ایمیل خود را وارد کنید',
+            'name': 'email'
+        }),
+        error_messages={
+            'required': 'پر کردن ایمیل اجباری است',
+            'invalid': 'ایمیل معتبر نیست',
+        },
         validators=[
             validators.MaxLengthValidator(100),
-            validators.EmailValidator
+            validators.EmailValidator(),
         ]
     )
 
 
 class ResetPasswordForm(forms.Form):
     password = forms.CharField(
-        label='کلمه عبور',
-        widget=forms.PasswordInput(),
+        label='رمز عبور',
+        widget=forms.PasswordInput(attrs={
+            'class': 'input100',
+            'placeholder': 'رمز عبور خود را وارد کنید',
+
+        }),
+        error_messages={
+            'required': 'رمز عبور الزامی است',
+        },
         validators=[
             validators.MaxLengthValidator(100),
         ]
     )
 
     confirm_password = forms.CharField(
-        label='تکرار کلمه عبور',
-        widget=forms.PasswordInput(),
+        label='تکرار رمز عبور',
+        widget=forms.PasswordInput(attrs={
+            'class': 'input100',
+            'placeholder': 'تکرار رمز عبور خود را وارد کنید',
+
+        }),
+        error_messages={
+            'required': 'تکرار رمز عبور خود را وارد کنید',
+        },
         validators=[
             validators.MaxLengthValidator(100),
         ]
     )
-    def clean_confirm_password(self):
-        password = self.cleaned_data.get('password')
-        confirm_password = self.cleaned_data.get('confirm_password')
 
-        if password == confirm_password:
-            return confirm_password
+    def clean(self):
+        cleaned_data = super().clean()
 
-        raise ValidationError('کلمه عبور و تکرار کلمه عبور مغایرت دارند')
+        password = cleaned_data.get('password')
+        confirm_password = cleaned_data.get('confirm_password')
+
+        if password and confirm_password and password != confirm_password:
+            raise ValidationError('کلمه عبور با تکرار آن مفایرت دارد')
+        return cleaned_data
