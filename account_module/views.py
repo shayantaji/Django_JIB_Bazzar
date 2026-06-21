@@ -100,5 +100,9 @@ class ActivateAccountView(View):
             else:
                 # todo: show your account was activated message to user
                 pass
-
         raise Http404
+
+class LogoutView(View):
+    def get(self, request):
+        logout(request)
+        return redirect(reverse('home'))
