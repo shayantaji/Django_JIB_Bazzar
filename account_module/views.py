@@ -1,8 +1,6 @@
-from django.contrib.auth.forms import PasswordResetForm
 from django.db.models import Q
 from django.http import Http404
 from django.shortcuts import redirect
-from django.template.base import kwarg_re
 from django.urls import reverse_lazy, reverse
 from django.utils.crypto import get_random_string
 from django.views import View
@@ -67,7 +65,7 @@ class LoginView(FormView):
         if user is None:
             form.add_error(
                 'email_username',
-                'کاربری بااین نام کاربری یا ایمیل یافت نشد'
+                'نام کاربری یا رمز عبور اشتباه است'
             )
             return self.form_invalid(form)
 
@@ -81,7 +79,7 @@ class LoginView(FormView):
         if not user.check_password(password):
             form.add_error(
                 'password',
-                'رمز عبور وارد شده صحیح نیست'
+                'نام کاربری یا رمز عبور اشتباه است'
             )
             return self.form_invalid(form)
 
@@ -108,7 +106,7 @@ class ActivateAccountView(View):
                 user.email_active_code = get_random_string(72)
                 user.save()
                 # todo: show success message to user
-                return redirect(reverse('home'))
+                return redirect(reverse('login'))
             else:
                 # todo: show your account was activated message to user
                 pass
