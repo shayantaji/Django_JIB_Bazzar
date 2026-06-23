@@ -1,0 +1,31 @@
+{% extends 'main/_layout.html' %}
+{% block title %}
+	جیب بازار -پیام فعال شدن حساب کاربری
+{% endblock %}
+{% block content %}
+
+<div class="activate-container">
+    <div class="activate-box">
+
+        <div class="activate-icon">✔</div>
+
+        <h2 class="activate-title">
+            اکانت شما با موفقیت فعال شد
+        </h2>
+
+        <p class="activate-text">
+            تا ۵ ثانیه دیگر به صفحه ورود منتقل می‌شوید...
+        </p>
+
+        <p class="activate-count">
+            زمان باقی‌مانده: <span id="countdown">5</span> ثانیه
+        </p>
+
+        <a class="activate-btn" href="{% url 'home' %}">
+            رفتن به صفحه اصلی
+        </a>
+
+    </div>
+</div>
+
+{% endblock %}

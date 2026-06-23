@@ -1,0 +1,39 @@
+{% extends 'main/_layout.html' %}
+
+{% block title %}
+    ارسال مجدد ایمیل فعالسازی
+{% endblock %}
+
+{% block content %}
+
+<div class="resend-container">
+    <div class="resend-box">
+
+        <h2 class="resend-title">
+            حساب کاربری فعال نیست
+        </h2>
+
+        <p class="resend-text">
+            برای فعالسازی حساب خود،به ایمیل ارسال شده مراجعه کنید. <br>
+            با دکمه زیر می توانید ایمیل فعالسازی حساب کاربری خود را مجدا دریافت کنید.
+        </p>
+
+        <p class="resend-email">
+            ایمیل شما: <span>{{ user.email }}</span>
+        </p>
+
+        <form method="post">
+            {% csrf_token %}
+            <button type="submit" class="resend-btn">
+                ارسال دوباره ایمیل فعالسازی
+            </button>
+        </form>
+
+        <a href="{% url 'login' %}" class="back-link">
+            بازگشت به ورود
+        </a>
+
+    </div>
+</div>
+
+{% endblock %}

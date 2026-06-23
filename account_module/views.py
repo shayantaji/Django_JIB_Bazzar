@@ -1,10 +1,10 @@
 from django.db.models import Q
 from django.http import Http404
-from django.shortcuts import redirect
+from django.shortcuts import redirect, render
 from django.urls import reverse_lazy, reverse
 from django.utils.crypto import get_random_string
 from django.views import View
-from django.views.generic import FormView
+from django.views.generic import FormView, TemplateView
 from account_module.forms import RegisterForm, LoginForm, ForgotPasswordForm, ResetPasswordForm
 from account_module.models import User
 from utils.email_service import send_email
@@ -16,7 +16,7 @@ from django.contrib.auth import login, logout
 class RegisterView(FormView):
 
     template_name = 'account_module/register.html'
-    success_url = reverse_lazy('home')
+    success_url = reverse_lazy('send_email_success')
     form_class = RegisterForm
 
     def form_valid(self, form):
@@ -69,12 +69,6 @@ class LoginView(FormView):
             )
             return self.form_invalid(form)
 
-        if not user.is_active:
-            form.add_error(
-                'email_username',
-                'حساب کاربری شما هنوز فعال نشده است جهت فعالسازی به ایمیلتان مراجعه کنید'
-            )
-            return self.form_invalid(form)
 
         if not user.check_password(password):
             form.add_error(
@@ -82,6 +76,10 @@ class LoginView(FormView):
                 'نام کاربری یا رمز عبور اشتباه است'
             )
             return self.form_invalid(form)
+
+        if not user.is_active:
+            self.request.session['inactive_user_id'] = user.id
+            return redirect(reverse('resend_email'))
 
         login(self.request, user)
 
@@ -105,13 +103,16 @@ class ActivateAccountView(View):
                 user.is_active = True
                 user.email_active_code = get_random_string(72)
                 user.save()
-                # todo: show success message to user
-                return redirect(reverse('login'))
+                return redirect(reverse('activate_massage'))
             else:
-                # todo: show your account was activated message to user
-                pass
+                return redirect(reverse('not_activate_massage'))
         raise Http404
 
+class ActivateMassageView(TemplateView):
+     template_name = 'account_module/activate_massage.html'
+
+class NotActivateMassageView(TemplateView):
+    template_name = 'account_module/notactivate_massage.html'
 
 
 class ForgotPasswordView(FormView):
@@ -147,4 +148,45 @@ class PasswordResetView(FormView):
         return super().form_valid(form)
 
 
+class ResendEmailView(View):
 
+
+    def get(self, request):
+        user_id = request.session.get('inactive_user_id')
+
+        if not user_id:
+            return redirect('login')
+
+        user = User.objects.filter(id=user_id).first()
+
+        if user is None:
+            return redirect('login')
+
+
+        if user.is_active:
+            return redirect('login')
+
+
+        return render(request, 'account_module/resend_email.html', {
+            'user': user
+        })
+
+    def post(self, request):
+        user_id = request.session.get('inactive_user_id')
+
+        if not user_id:
+            return redirect('login')
+
+        user = User.objects.filter(id=user_id).first()
+
+        if user is None or user.is_active:
+            return redirect('login')
+
+        user.email_active_code = get_random_string(72)
+        user.save()
+        send_email('فعالسازی حساب کاربری', user.email, {'user': user}, 'emails/email_active_code.html')
+
+        return render(request, 'account_module/send_email_success_massage.html')
+
+class SendEmailSuccessView(TemplateView):
+    template_name = 'account_module/send_email_success_massage.html'
