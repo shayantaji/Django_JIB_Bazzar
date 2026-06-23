@@ -111,7 +111,7 @@
     </div>
     <!-- ***** Main Banner Area End ***** -->
 
-    <!-- ***** Men Area Starts ***** -->
+    <!-- ***** latest_products Area Starts ***** -->
     <section class="section" id="men">
         <div class="container">
             <div class="row">
@@ -128,107 +128,42 @@
                 <div class="col-lg-12">
                     <div class="men-item-carousel">
                         <div class="owl-men-item owl-carousel">
-                            <div class="item">
+                           {% for latest_product in latest_products %}
+                                <div class="item">
                                 <div class="thumb">
                                     <div class="hover-content">
                                         <ul>
-                                            <li><a href="single-product.html"><i class="fa fa-eye"></i></a></li>
-                                            <li><a href="single-product.html"><i class="fa fa-star"></i></a></li>
+                                            <li><a href="{% url 'product-detail' slug=latest_product.slug %}"><i class="fa fa-eye"></i></a></li>
                                             <li><a href="single-product.html"><i class="fa fa-shopping-cart"></i></a></li>
                                         </ul>
                                     </div>
-                                    <img src="static/images/men-01.jpg" alt="">
+                                    <img src="{{ latest_product.image.url }}" alt="">
                                 </div>
                                 <div class="down-content">
-                                    <h4 class="text-right">بهار کلاسیک</h4>
-                                    <span class="text-right">120,000</span>
+                                    <h4 class="text-right">{{ latest_product.title}}</h4>
+                                    <span class="text-right">{{ latest_product.price }}</span>
                                     <ul class="stars">
+
+                                    {% for star in latest_product.star_range %}
                                         <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
+                                    {% endfor %}
+
                                     </ul>
                                 </div>
                             </div>
-                            <div class="item">
-                                <div class="thumb">
-                                    <div class="hover-content">
-                                        <ul>
-                                            <li><a href="single-product.html"><i class="fa fa-eye"></i></a></li>
-                                            <li><a href="single-product.html"><i class="fa fa-star"></i></a></li>
-                                            <li><a href="single-product.html"><i class="fa fa-shopping-cart"></i></a></li>
-                                        </ul>
-                                    </div>
-                                    <img src="static/images/men-02.jpg" alt="">
-                                </div>
-                                <div class="down-content">
-                                    <h4 class="text-right">نیروی هوایی 1 X</h4>
-                                    <span class="text-right">100,000</span>
-                                    <ul class="stars">
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="thumb">
-                                    <div class="hover-content">
-                                        <ul>
-                                            <li><a href="single-product.html"><i class="fa fa-eye"></i></a></li>
-                                            <li><a href="single-product.html"><i class="fa fa-star"></i></a></li>
-                                            <li><a href="single-product.html"><i class="fa fa-shopping-cart"></i></a></li>
-                                        </ul>
-                                    </div>
-                                    <img src="static/images/men-03.jpg" alt="">
-                                </div>
-                                <div class="down-content">
-                                    <h4 class="text-right">عاشق نانا 20</h4>
-                                    <span class="text-right">150,000</span>
-                                    <ul class="stars">
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="thumb">
-                                    <div class="hover-content">
-                                        <ul>
-                                            <li><a href="single-product.html"><i class="fa fa-eye"></i></a></li>
-                                            <li><a href="single-product.html"><i class="fa fa-star"></i></a></li>
-                                            <li><a href="single-product.html"><i class="fa fa-shopping-cart"></i></a></li>
-                                        </ul>
-                                    </div>
-                                    <img src="static/images/men-01.jpg" alt="">
-                                </div>
-                                <div class="down-content">
-                                    <h4 class="text-right">بهار کلاسیک</h4>
-                                    <span class="text-right">120,000</span>
-                                    <ul class="stars">
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                    </ul>
-                                </div>
-                            </div>
+
+                           {% endfor %}
+
+
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-    <!-- ***** Men Area Ends ***** -->
+    <!-- ***** latest_products Area Ends ***** -->
 
-    <!-- ***** Women Area Starts ***** -->
+    <!-- ***** best_selling_products   Area Starts ***** -->
     <section class="section" id="women">
         <div class="container">
             <div class="row">
@@ -245,107 +180,41 @@
                 <div class="col-lg-12">
                     <div class="women-item-carousel">
                         <div class="owl-women-item owl-carousel">
-                            <div class="item">
+                           {% for best_selling_product in best_selling_products %}
+                             <div class="item">
                                 <div class="thumb">
                                     <div class="hover-content">
                                         <ul>
-                                            <li><a href="single-product.html"><i class="fa fa-eye"></i></a></li>
-                                            <li><a href="single-product.html"><i class="fa fa-star"></i></a></li>
+                                            <li><a href="{% url 'product-detail' slug=best_selling_product.slug %}"><i class="fa fa-eye"></i></a></li>
                                             <li><a href="single-product.html"><i class="fa fa-shopping-cart"></i></a></li>
                                         </ul>
                                     </div>
-                                    <img src="static/images/women-01.jpg" alt="">
+                                    <img src="{{ best_selling_product.image.url }}" alt="">
                                 </div>
                                 <div class="down-content">
-                                    <h4 class="text-right">کت سبز جدید</h4>
-                                    <span class="text-right">120,000</span>
+                                    <h4 class="text-right">{{ best_selling_product.title}}</h4>
+                                    <span class="text-right">{{ best_selling_product.price }}</span>
                                     <ul class="stars">
+
+                                    {% for star in best_selling_product.star_range %}
                                         <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
+                                    {% endfor %}
+
                                     </ul>
                                 </div>
                             </div>
-                            <div class="item">
-                                <div class="thumb">
-                                    <div class="hover-content">
-                                        <ul>
-                                            <li><a href="single-product.html"><i class="fa fa-eye"></i></a></li>
-                                            <li><a href="single-product.html"><i class="fa fa-star"></i></a></li>
-                                            <li><a href="single-product.html"><i class="fa fa-shopping-cart"></i></a></li>
-                                        </ul>
-                                    </div>
-                                    <img src="static/images/women-02.jpg" alt="">
-                                </div>
-                                <div class="down-content">
-                                    <h4 class="text-right">لباس کلاسیک</h4>
-                                    <span class="text-right">152,000</span>
-                                    <ul class="stars">
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="thumb">
-                                    <div class="hover-content">
-                                        <ul>
-                                            <li><a href="single-product.html"><i class="fa fa-eye"></i></a></li>
-                                            <li><a href="single-product.html"><i class="fa fa-star"></i></a></li>
-                                            <li><a href="single-product.html"><i class="fa fa-shopping-cart"></i></a></li>
-                                        </ul>
-                                    </div>
-                                    <img src="static/images/women-03.jpg" alt="">
-                                </div>
-                                <div class="down-content">
-                                    <h4 class="text-right">مجموعه بهار</h4>
-                                    <span class="text-right">130,000</span>
-                                    <ul class="stars">
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="thumb">
-                                    <div class="hover-content">
-                                        <ul>
-                                            <li><a href="single-product.html"><i class="fa fa-eye"></i></a></li>
-                                            <li><a href="single-product.html"><i class="fa fa-star"></i></a></li>
-                                            <li><a href="single-product.html"><i class="fa fa-shopping-cart"></i></a></li>
-                                        </ul>
-                                    </div>
-                                    <img src="static/images/women-01.jpg" alt="">
-                                </div>
-                                <div class="down-content">
-                                    <h4 class="text-right">بهار کلاسیک</h4>
-                                    <span class="text-right">120,000</span>
-                                    <ul class="stars">
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                    </ul>
-                                </div>
-                            </div>
+
+                           {% endfor %}
+
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-    <!-- ***** Women Area Ends ***** -->
+    <!-- ***** best_selling_products   Area Ends ***** -->
 
-    <!-- ***** Kids Area Starts ***** -->
+    <!-- ***** featured_products  Area Starts ***** -->
     <section class="section" id="kids">
         <div class="container">
             <div class="row">
@@ -362,105 +231,38 @@
                 <div class="col-lg-12">
                     <div class="kid-item-carousel">
                         <div class="owl-kid-item owl-carousel">
-                            <div class="item">
+                            {% for featured_product in featured_products %}
+                            	<div class="item">
                                 <div class="thumb">
                                     <div class="hover-content">
                                         <ul>
-                                            <li><a href="single-product.html"><i class="fa fa-eye"></i></a></li>
-                                            <li><a href="single-product.html"><i class="fa fa-star"></i></a></li>
+                                            <li><a href="{% url 'product-detail' slug=featured_product.slug %}"><i class="fa fa-eye"></i></a></li>
                                             <li><a href="single-product.html"><i class="fa fa-shopping-cart"></i></a></li>
                                         </ul>
                                     </div>
-                                    <img src="static/images/kid-01.jpg" alt="">
+                                    <img src="{{ featured_product.image.url }}" alt="">
                                 </div>
                                 <div class="down-content">
-                                    <h4 class="text-right">مجموعه مدرسه</h4>
-                                    <span class="text-right">100,000</span>
+                                    <h4 class="text-right">{{ featured_product.title}}</h4>
+                                    <span class="text-right">{{ featured_product.price }}</span>
                                     <ul class="stars">
+
+                                    {% for star in featured_product.star_range %}
                                         <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
+                                    {% endfor %}
+
                                     </ul>
                                 </div>
                             </div>
-                            <div class="item">
-                                <div class="thumb">
-                                    <div class="hover-content">
-                                        <ul>
-                                            <li><a href="single-product.html"><i class="fa fa-eye"></i></a></li>
-                                            <li><a href="single-product.html"><i class="fa fa-star"></i></a></li>
-                                            <li><a href="single-product.html"><i class="fa fa-shopping-cart"></i></a></li>
-                                        </ul>
-                                    </div>
-                                    <img src="static/images/kid-02.jpg" alt="">
-                                </div>
-                                <div class="down-content">
-                                    <h4 class="text-right">کلاه تابستانی</h4>
-                                    <span class="text-right">12,000</span>
-                                    <ul class="stars">
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="thumb">
-                                    <div class="hover-content">
-                                        <ul>
-                                            <li><a href="single-product.html"><i class="fa fa-eye"></i></a></li>
-                                            <li><a href="single-product.html"><i class="fa fa-star"></i></a></li>
-                                            <li><a href="single-product.html"><i class="fa fa-shopping-cart"></i></a></li>
-                                        </ul>
-                                    </div>
-                                    <img src="static/images/kid-03.jpg" alt="">
-                                </div>
-                                <div class="down-content">
-                                    <h4 class="text-right">بچه کلاسیک</h4>
-                                    <span class="text-right">10,000</span>
-                                    <ul class="stars">
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="thumb">
-                                    <div class="hover-content">
-                                        <ul>
-                                            <li><a href="single-product.html"><i class="fa fa-eye"></i></a></li>
-                                            <li><a href="single-product.html"><i class="fa fa-star"></i></a></li>
-                                            <li><a href="single-product.html"><i class="fa fa-shopping-cart"></i></a></li>
-                                        </ul>
-                                    </div>
-                                    <img src="static/images/kid-01.jpg" alt="">
-                                </div>
-                                <div class="down-content">
-                                    <h4 class="text-right">بهار کلاسیک</h4>
-                                    <span class="text-right">120,000</span>
-                                    <ul class="stars">
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                    </ul>
-                                </div>
-                            </div>
+                            {% endfor %}
+
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-    <!-- ***** Kids Area Ends ***** -->
+    <!-- ***** featured_products  Area Ends ***** -->
 
     <!-- ***** Explore Area Starts ***** -->
     <section class="section" id="explore">

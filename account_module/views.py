@@ -83,11 +83,15 @@ class LoginView(FormView):
 
         login(self.request, user)
 
+        remember_me = self.request.POST.get('remember-me')
+
+        if remember_me:
+            self.request.session.set_expiry(60 * 60 * 24 * 3)  # 3 روز
+        else:
+            self.request.session.set_expiry(0)  # تا بستن مرورگر
+
         return super().form_valid(form)
 
-    def form_invalid(self, form):
-        print(form.errors)
-        return super().form_invalid(form)
 
 class LogoutView(View):
     def get(self, request):

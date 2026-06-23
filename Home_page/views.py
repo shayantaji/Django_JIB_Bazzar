@@ -1,14 +1,35 @@
 from django.shortcuts import render
+
+from Product_page.models import Product
 from site_config.models import SiteSetting,FooterLink,FooterLinkBox
 
 def home_page(request):
-    data: SiteSetting = SiteSetting.objects.filter(is_main_setting=True).first()
+
+    data = SiteSetting.objects.filter(
+        is_main_setting=True
+    ).first()
+
+    latest_products = Product.objects.filter(
+        is_active=True
+    ).order_by('-created_date')[:8]
+
+    featured_products = Product.objects.filter(
+        is_active=True,
+        is_featured=True
+    )[:8]
+
+    best_selling_products = Product.objects.filter(
+        is_active=True
+    ).order_by('-sold_count')[:8]
+
     context = {
         'site_setting': data,
+        'latest_products': latest_products,
+        'featured_products': featured_products,
+        'best_selling_products': best_selling_products,
     }
-    return render(request,"home_page/home_page.html",context)
 
-
+    return render(request, 'home_page/home_page.html', context)
 def header_site_component(request):
     data : SiteSetting = SiteSetting.objects.filter(is_main_setting=True).first()
     context = {'site_setting':data}
