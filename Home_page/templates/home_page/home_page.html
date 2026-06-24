@@ -13,7 +13,7 @@
                                 <h4>ما جیب بازار هستیم</h4>
                                 <span>{{ site_setting.site_slogan }}</span>
                                 <div class="main-border-button">
-                                    <a href="#">هم اکنون بخرید!</a>
+                                    <a href={% url 'product_page' %}>هم اکنون بخرید!</a>
                                 </div>
                             </div>
                             <img src="static/images/left-banner-image.jpg" alt="">
@@ -128,32 +128,10 @@
                 <div class="col-lg-12">
                     <div class="men-item-carousel">
                         <div class="owl-men-item owl-carousel">
+
                            {% for latest_product in latest_products %}
-                                <div class="item">
-                                <div class="thumb">
-                                    <div class="hover-content">
-                                        <ul>
-                                            <li><a href="{% url 'product-detail' slug=latest_product.slug %}"><i class="fa fa-eye"></i></a></li>
-                                            <li><a href="single-product.html"><i class="fa fa-shopping-cart"></i></a></li>
-                                        </ul>
-                                    </div>
-                                    <img src="{{ latest_product.image.url }}" alt="">
-                                </div>
-                                <div class="down-content">
-                                    <h4 class="text-right">{{ latest_product.title}}</h4>
-                                    <span class="text-right">{{ latest_product.price }}</span>
-                                    <ul class="stars">
-
-                                    {% for star in latest_product.star_range %}
-                                        <li><i class="fa fa-star"></i></li>
-                                    {% endfor %}
-
-                                    </ul>
-                                </div>
-                            </div>
-
+                                {% include "includes/product_each_item.html" with product=latest_product %}
                            {% endfor %}
-
 
                         </div>
                     </div>
@@ -180,30 +158,9 @@
                 <div class="col-lg-12">
                     <div class="women-item-carousel">
                         <div class="owl-women-item owl-carousel">
+
                            {% for best_selling_product in best_selling_products %}
-                             <div class="item">
-                                <div class="thumb">
-                                    <div class="hover-content">
-                                        <ul>
-                                            <li><a href="{% url 'product-detail' slug=best_selling_product.slug %}"><i class="fa fa-eye"></i></a></li>
-                                            <li><a href="single-product.html"><i class="fa fa-shopping-cart"></i></a></li>
-                                        </ul>
-                                    </div>
-                                    <img src="{{ best_selling_product.image.url }}" alt="">
-                                </div>
-                                <div class="down-content">
-                                    <h4 class="text-right">{{ best_selling_product.title}}</h4>
-                                    <span class="text-right">{{ best_selling_product.price }}</span>
-                                    <ul class="stars">
-
-                                    {% for star in best_selling_product.star_range %}
-                                        <li><i class="fa fa-star"></i></li>
-                                    {% endfor %}
-
-                                    </ul>
-                                </div>
-                            </div>
-
+                              {% include "includes/product_each_item.html" with product=best_selling_product %}
                            {% endfor %}
 
                         </div>
@@ -220,8 +177,8 @@
             <div class="row">
                 <div class="col-lg-6">
                     <div class="section-heading">
-                        <h2 class="text-right">محصولات ویژه</h2>
-                        <span class="text-right">محصولاتی که نسبت به جنس و برندشان قیمت مناسبی دارند در دسته محصولات ویژه جب بازار قرار میگیرند</span>
+                        <h2 class="text-right">محصولات براساس امتیاز</h2>
+                        <span class="text-right">محصولات براساس امتیازی مرتب شده اند میزان ستاره ها نشان میزان امتیاز دریافتی از شماست</span>
                     </div>
                 </div>
             </div>
@@ -231,29 +188,39 @@
                 <div class="col-lg-12">
                     <div class="kid-item-carousel">
                         <div class="owl-kid-item owl-carousel">
+
+                           {% for top_rated_product in top_rated_products %}
+                           	  {% include "includes/product_each_item.html" with product=top_rated_product %}
+                           {% endfor %}
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ***** featured_products  Area Ends ***** -->
+
+        <!-- ***** featured_products  Area Starts ***** -->
+    <section class="section" id="kids">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="section-heading">
+                        <h2 class="text-right">محصولات ویژه</h2>
+                        <span class="text-right">محصولاتی که نسبت به جنس و برندشان قیمت مناسبی دارند در دسته محصولات ویژه قرار میگیرند</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="kid-item-carousel">
+                        <div class="owl-kid-item owl-carousel">
+
                             {% for featured_product in featured_products %}
-                            	<div class="item">
-                                <div class="thumb">
-                                    <div class="hover-content">
-                                        <ul>
-                                            <li><a href="{% url 'product-detail' slug=featured_product.slug %}"><i class="fa fa-eye"></i></a></li>
-                                            <li><a href="single-product.html"><i class="fa fa-shopping-cart"></i></a></li>
-                                        </ul>
-                                    </div>
-                                    <img src="{{ featured_product.image.url }}" alt="">
-                                </div>
-                                <div class="down-content">
-                                    <h4 class="text-right">{{ featured_product.title}}</h4>
-                                    <span class="text-right">{{ featured_product.price }}</span>
-                                    <ul class="stars">
-
-                                    {% for star in featured_product.star_range %}
-                                        <li><i class="fa fa-star"></i></li>
-                                    {% endfor %}
-
-                                    </ul>
-                                </div>
-                            </div>
+                            	 {% include "includes/product_each_item.html" with product=featured_product %}
                             {% endfor %}
 
                         </div>

@@ -22,12 +22,20 @@ def home_page(request):
         is_active=True
     ).order_by('-sold_count')[:8]
 
+    top_rated_products = Product.objects.filter(
+        is_active=True,
+        rating__gt=0
+    ).order_by('-rating')[:8]
+
     context = {
         'site_setting': data,
         'latest_products': latest_products,
-        'featured_products': featured_products,
         'best_selling_products': best_selling_products,
+        'top_rated_products': top_rated_products
     }
+
+    if featured_products.exists():
+        context['featured_products'] = featured_products
 
     return render(request, 'home_page/home_page.html', context)
 def header_site_component(request):
