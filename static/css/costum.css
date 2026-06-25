@@ -226,3 +226,9 @@
 .back-link:hover {
     text-decoration: underline;
 }
+#men,
+#women,
+#kids,
+#featured {
+    scroll-margin-top: 100px;
+}

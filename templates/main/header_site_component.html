@@ -33,49 +33,48 @@
                             </a>
                         </li>
 
+                         <li class="submenu">
+                            <a href="{% url 'product_page' %}">
+                            محصولات</a>
+                            <ul>
+                                <li>
+                                    <a href="{% url 'home' %}#new">
+                                        جدیدترین محصولات
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a href="{% url 'home' %}#sold">
+                                        پرفروش ترین محصولات
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a href="{% url 'home' %}#score">
+                                        پرامتیازترین محصولات
+                                    </a>
+                                </li>
+
+
+
+                            </ul>
+                        </li>
+
                         <li>
-                            <a href="{% url 'product_page' %}"
-                               class="{% if request.resolver_match.url_name == 'product_page' %}active{% endif %}">
-                                محصولات
+                            <a href="{% url 'contact_us' %}">
+                                تماس با ما
                             </a>
                         </li>
 
-                        <li class="scroll-to-section">
-                            <a href="#men">جدید ترین محصولات</a>
+
+                        <li>
+                            <a href="{% url 'about_us' %}"
+                               class="{% if request.resolver_match.url_name == 'about_us' %}active{% endif %}">
+                                درباره ما
+                            </a>
                         </li>
 
-                        <li class="scroll-to-section">
-                            <a href="#women">زنانه</a>
-                        </li>
 
-                        <li class="scroll-to-section">
-                            <a href="#kids">بچگانه</a>
-                        </li>
-
-                        <li class="submenu">
-                            <a href="#">صفحات</a>
-                            <ul>
-                                <li>
-                                    <a href="{% url 'about_us' %}"
-                                       class="{% if request.resolver_match.url_name == 'about_us' %}active{% endif %}">
-                                        درباره ما
-                                    </a>
-                                </li>
-
-                                <li>
-                                    <a href="single-product.html">
-                                        محصول منفرد
-                                    </a>
-                                </li>
-
-                                <li>
-                                    <a href="{% url 'contact_us' %}"
-                                       class="{% if request.resolver_match.url_name == 'contact_us' %}active{% endif %}">
-                                        تماس با ما
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
 
                         <!-- 🔥 AUTH ICONS -->
                         <li class="auth-icons">
