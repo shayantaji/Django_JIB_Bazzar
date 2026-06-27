@@ -7,7 +7,7 @@
     جیب بازار - درباره ما
 {% endblock %}
 {% block content %}
-	 <!-- ***** Main Banner Area Start ***** -->
+    <!-- ***** Main Banner Area Start ***** -->
     <div class="page-heading about-page-heading" id="top">
         <div class="container">
             <div class="row">
@@ -36,13 +36,14 @@
                         <h4>درباره ما و مهارت های ما</h4>
                         <span>{{ site_setting.about_us_super_text }} </span>
                         <div class="quote">
-                            <i class="fa fa-quote-right"></i><p>شعار همیشگی تیم جیب بازار</p>
+                            <i class="fa fa-quote-right"></i>
+                            <p>شعار همیشگی تیم جیب بازار</p>
                         </div>
                         <p>
                             {{ site_setting.site_slogan }}
                         </p>
                         <ul>
-                            <li><a href="{{site_setting.github_url}}"><i class="fa fa-github"></i></a></li>
+                            <li><a href="{{ site_setting.github_url }}"><i class="fa fa-github"></i></a></li>
                             <li><a href="{{ site_setting.instagram_url }}"><i class="fa fa-instagram"></i></a></li>
                         </ul>
                     </div>
@@ -50,85 +51,85 @@
             </div>
         </div>
     </div>
-{#    <!-- ***** About Area Ends ***** -->#}
-{##}
+    {#    <!-- ***** About Area Ends ***** -->#}
+    {##}
     <!-- ***** Our Team Area Starts ***** -->
-{#    <section class="our-team">#}
-{#        <div class="container">#}
-{#            <div class="row">#}
-{#                <div class="col-lg-12">#}
-{#                    <div class="section-heading">#}
-{#                        <h2>تیم شگفت انگیز ما</h2>#}
-{#                        <span>جزئیات مربوط به جزئیات همان چیزی است که هگزاشوپ را با مضامین دیگر متفاوت می کند.</span>#}
-{#                    </div>#}
-{#                </div>#}
-{#                <div class="col-lg-4">#}
-{#                    <div class="team-item">#}
-{#                        <div class="thumb">#}
-{#                            <div class="hover-effect">#}
-{#                                <div class="inner-content">#}
-{#                                    <ul>#}
-{#                                        <li><a href="#"><i class="fa fa-facebook"></i></a></li>#}
-{#                                        <li><a href="#"><i class="fa fa-twitter"></i></a></li>#}
-{#                                        <li><a href="#"><i class="fa fa-linkedin"></i></a></li>#}
-{#                                        <li><a href="#"><i class="fa fa-behance"></i></a></li>#}
-{#                                    </ul>#}
-{#                                </div>#}
-{#                            </div>#}
-{#                            <img src={% static 'images/team-member-01.jpg' %}>#}
-{#                        </div>#}
-{#                        <div class="down-content">#}
-{#                            <h4>سارا پاشا</h4>#}
-{#                            <span>مراقب محصول</span>#}
-{#                        </div>#}
-{#                    </div>#}
-{#                </div>#}
-{#                <div class="col-lg-4">#}
-{#                    <div class="team-item">#}
-{#                        <div class="thumb">#}
-{#                            <div class="hover-effect">#}
-{#                                <div class="inner-content">#}
-{#                                    <ul>#}
-{#                                        <li><a href="#"><i class="fa fa-facebook"></i></a></li>#}
-{#                                        <li><a href="#"><i class="fa fa-twitter"></i></a></li>#}
-{#                                        <li><a href="#"><i class="fa fa-linkedin"></i></a></li>#}
-{#                                        <li><a href="#"><i class="fa fa-behance"></i></a></li>#}
-{#                                    </ul>#}
-{#                                </div>#}
-{#                            </div>#}
-{#                            <img src={% static 'images/team-member-02.jpg' %}>#}
-{#                        </div>#}
-{#                        <div class="down-content">#}
-{#                            <h4>علی صفایی</h4>#}
-{#                            <span>مراقب محصول</span>#}
-{#                        </div>#}
-{#                    </div>#}
-{#                </div>#}
-{#                <div class="col-lg-4">#}
-{#                    <div class="team-item">#}
-{#                        <div class="thumb">#}
-{#                            <div class="hover-effect">#}
-{#                                <div class="inner-content">#}
-{#                                    <ul>#}
-{#                                        <li><a href="#"><i class="fa fa-facebook"></i></a></li>#}
-{#                                        <li><a href="#"><i class="fa fa-twitter"></i></a></li>#}
-{#                                        <li><a href="#"><i class="fa fa-linkedin"></i></a></li>#}
-{#                                        <li><a href="#"><i class="fa fa-behance"></i></a></li>#}
-{#                                    </ul>#}
-{#                                </div>#}
-{#                            </div>#}
-{#                            <img src={% static 'images/team-member-03.jpg' %}>#}
-{#                        </div>#}
-{#                        <div class="down-content">#}
-{#                            <h4>نیما مرادی</h4>#}
-{#                            <span>مراقب محصول</span>#}
-{#                        </div>#}
-{#                    </div>#}
-{#                </div>#}
-{#            </div>#}
-{#        </div>#}
-{#    </section>#}
-{#    <!-- ***** Our Team Area Ends ***** -->#}
+    {#    <section class="our-team">#}
+    {#        <div class="container">#}
+    {#            <div class="row">#}
+    {#                <div class="col-lg-12">#}
+    {#                    <div class="section-heading">#}
+    {#                        <h2>تیم شگفت انگیز ما</h2>#}
+    {#                        <span>جزئیات مربوط به جزئیات همان چیزی است که هگزاشوپ را با مضامین دیگر متفاوت می کند.</span>#}
+    {#                    </div>#}
+    {#                </div>#}
+    {#                <div class="col-lg-4">#}
+    {#                    <div class="team-item">#}
+    {#                        <div class="thumb">#}
+    {#                            <div class="hover-effect">#}
+    {#                                <div class="inner-content">#}
+    {#                                    <ul>#}
+    {#                                        <li><a href="#"><i class="fa fa-facebook"></i></a></li>#}
+    {#                                        <li><a href="#"><i class="fa fa-twitter"></i></a></li>#}
+    {#                                        <li><a href="#"><i class="fa fa-linkedin"></i></a></li>#}
+    {#                                        <li><a href="#"><i class="fa fa-behance"></i></a></li>#}
+    {#                                    </ul>#}
+    {#                                </div>#}
+    {#                            </div>#}
+    {#                            <img src={% static 'images/team-member-01.jpg' %}>#}
+    {#                        </div>#}
+    {#                        <div class="down-content">#}
+    {#                            <h4>سارا پاشا</h4>#}
+    {#                            <span>مراقب محصول</span>#}
+    {#                        </div>#}
+    {#                    </div>#}
+    {#                </div>#}
+    {#                <div class="col-lg-4">#}
+    {#                    <div class="team-item">#}
+    {#                        <div class="thumb">#}
+    {#                            <div class="hover-effect">#}
+    {#                                <div class="inner-content">#}
+    {#                                    <ul>#}
+    {#                                        <li><a href="#"><i class="fa fa-facebook"></i></a></li>#}
+    {#                                        <li><a href="#"><i class="fa fa-twitter"></i></a></li>#}
+    {#                                        <li><a href="#"><i class="fa fa-linkedin"></i></a></li>#}
+    {#                                        <li><a href="#"><i class="fa fa-behance"></i></a></li>#}
+    {#                                    </ul>#}
+    {#                                </div>#}
+    {#                            </div>#}
+    {#                            <img src={% static 'images/team-member-02.jpg' %}>#}
+    {#                        </div>#}
+    {#                        <div class="down-content">#}
+    {#                            <h4>علی صفایی</h4>#}
+    {#                            <span>مراقب محصول</span>#}
+    {#                        </div>#}
+    {#                    </div>#}
+    {#                </div>#}
+    {#                <div class="col-lg-4">#}
+    {#                    <div class="team-item">#}
+    {#                        <div class="thumb">#}
+    {#                            <div class="hover-effect">#}
+    {#                                <div class="inner-content">#}
+    {#                                    <ul>#}
+    {#                                        <li><a href="#"><i class="fa fa-facebook"></i></a></li>#}
+    {#                                        <li><a href="#"><i class="fa fa-twitter"></i></a></li>#}
+    {#                                        <li><a href="#"><i class="fa fa-linkedin"></i></a></li>#}
+    {#                                        <li><a href="#"><i class="fa fa-behance"></i></a></li>#}
+    {#                                    </ul>#}
+    {#                                </div>#}
+    {#                            </div>#}
+    {#                            <img src={% static 'images/team-member-03.jpg' %}>#}
+    {#                        </div>#}
+    {#                        <div class="down-content">#}
+    {#                            <h4>نیما مرادی</h4>#}
+    {#                            <span>مراقب محصول</span>#}
+    {#                        </div>#}
+    {#                    </div>#}
+    {#                </div>#}
+    {#            </div>#}
+    {#        </div>#}
+    {#    </section>#}
+    {#    <!-- ***** Our Team Area Ends ***** -->#}
 
     <!-- ***** Services Area Starts ***** -->
     <section class="our-services">
@@ -137,55 +138,66 @@
                 <div class="col-lg-12">
                     <div class="section-heading">
                         <h2>خدمات ما</h2>
-                        <span>{{ site_setting.site_slogan}}</span>
+                        <span>{{ site_setting.site_slogan }}</span>
                     </div>
                 </div>
                 {% for service  in services %}
-                	<div class="col-lg-4">
-                    <div class="service-item">
-                        <h4>{{ service.title}}</h4>
-                        <p>{{ service.details}}</p>
-                         {% thumbnail service.image "290x234" quality=90 crop="center" as im %}
-                                    <img src="{{ im.url }}">
-                                {% endthumbnail %}
+                    <div class="col-lg-4">
+                        <div class="service-item">
+                            <h4>{{ service.title }}</h4>
+                            <p>{{ service.details }}</p>
+                            {% thumbnail service.image "290x234" quality=90 crop="center" as im %}
+                                <img src="{{ im.url }}">
+                            {% endthumbnail %}
+                        </div>
                     </div>
-                </div>
                 {% endfor %}
-             
+
             </div>
         </div>
     </section>
-{#    <!-- ***** Services Area Ends ***** -->#}
+    {#    <!-- ***** Services Area Ends ***** -->#}
+
+    <!-- ***** Social Area Starts ***** -->
+    <section class="section" id="social">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="section-heading">
+                        <h2 class="text-right">رسانه های اجتماعی</h2>
+                        <span class="text-right">{{ SocialMedia.massage }}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row images">
+                {% if SocialMedia %}
+                    {% for gallery in SocialMedia.socialmediaservicesgallery_set.all %}
+                        <div class="col-2">
+                            <div class="thumb">
+                                <div class="icon">
+                                    <a href="#">
+                                        <h6>مد</h6>
+                                        <i class="fa fa-instagram"></i>
+                                    </a>
+                                </div>
+                                <img src="{{ gallery.image.url }}" alt="">
+                            </div>
+                        </div>
+                    {% endfor %}
+                {% endif %}
+            </div>
+        </div>
+    </section>
+    <!-- ***** Social Area Ends ***** -->
+
 
     <!-- ***** Subscribe Area Starts ***** -->
     <div class="subscribe">
         <div class="container">
             <div class="row">
-                <div class="col-lg-8">
-                    <div class="section-heading text-right">
-                        <h2>با ارسال پیشنهادها و انتقادات خودتون باعث بهتر شدن ما شوید .... </h2>
-                        <span>{{ site_setting.site_slogan }}</span>
-                    </div>
-                    <form id="subscribe" action="" method="get">
-                        <div class="row">
-                          <div class="col-lg-5">
-                            <fieldset>
-                              <input name="name" type="text" id="name" placeholder="نام شما" required="">
-                            </fieldset>
-                          </div>
-                          <div class="col-lg-5">
-                            <fieldset>
-                              <input name="email" type="text" id="email" pattern="[^ @]*@[^ @]*" placeholder="ایمیل شما" required="">
-                            </fieldset>
-                          </div>
-                          <div class="col-lg-2">
-                            <fieldset class="text-right">
-                              <button type="submit" id="form-submit" class="main-dark-button"><i class="fa fa-paper-plane send"></i></button>
-                            </fieldset>
-                          </div>
-                        </div>
-                    </form>
-                </div>
+                {% include 'feedback_box/include/feedback_box.html' %}
                 <div class="col-lg-4">
                     <div class="row">
                         <div class="col-6 text-right">
@@ -197,9 +209,10 @@
                         </div>
                         <div class="col-6 text-right">
                             <ul>
-                                <li>ساعات کاری:<br><span>{{ site_setting.working_hours}}</span></li>
-                                <li>ایمیل:<br><span>{{ site_setting.email}}</span></li>
-                                <li>شبکه های مجازی:<br><span> <a href="{{ site_setting.instagram_url }}">اینستاگرام</a>, <a href="{{ site_setting.github_url }}">گیت هاب</a></span></li>
+                                <li>ساعات کاری:<br><span>{{ site_setting.working_hours }}</span></li>
+                                <li>ایمیل:<br><span>{{ site_setting.email }}</span></li>
+                                <li>شبکه های مجازی:<br><span> <a href="{{ site_setting.instagram_url }}">اینستاگرام</a>, <a
+                                        href="{{ site_setting.github_url }}">گیت هاب</a></span></li>
                             </ul>
                         </div>
                     </div>

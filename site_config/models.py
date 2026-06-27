@@ -66,3 +66,36 @@ class SiteServices(models.Model):
     class Meta:
         verbose_name = 'خدمات'
         verbose_name_plural = 'خدمات سایت'
+
+
+class  SocialMediaServices(models.Model):
+    site = models.ForeignKey(SiteSetting, on_delete=models.CASCADE)
+    massage= models.CharField(verbose_name='توضیحات',null=True,blank=True)
+
+
+    def __str__(self):
+        return   "بخش شبکه‌های اجتماعی"
+
+    class Meta:
+        verbose_name = 'بخش شبکه‌های اجتماعی'
+        verbose_name_plural = ' شبکه‌ اجتماعی'
+
+
+class SocialMediaServicesGallery(models.Model):
+
+    social_media = models.ForeignKey(
+        SocialMediaServices,
+        on_delete=models.CASCADE,
+        verbose_name='گالری تصاویر'
+    )
+
+    image = models.ImageField(
+        upload_to='images/social_media/',verbose_name='تصویر'
+    )
+
+    def __str__(self):
+        return 'گالری شبکه اجتماعی'
+
+    class Meta:
+        verbose_name = 'تصویر'
+        verbose_name_plural = 'گالری تصاویر'

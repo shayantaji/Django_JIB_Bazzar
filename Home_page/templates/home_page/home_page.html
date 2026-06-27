@@ -1,5 +1,4 @@
 {% extends "main/_layout.html" %}
-
 {% block content %}
 
     <!-- ***** Main Banner Area Start ***** -->
@@ -129,9 +128,9 @@
                     <div class="men-item-carousel">
                         <div class="owl-men-item owl-carousel">
 
-                           {% for latest_product in latest_products %}
+                            {% for latest_product in latest_products %}
                                 {% include "includes/product_each_item.html" with product=latest_product %}
-                           {% endfor %}
+                            {% endfor %}
 
                         </div>
                     </div>
@@ -159,9 +158,9 @@
                     <div class="women-item-carousel">
                         <div class="owl-women-item owl-carousel">
 
-                           {% for best_selling_product in best_selling_products %}
-                              {% include "includes/product_each_item.html" with product=best_selling_product %}
-                           {% endfor %}
+                            {% for best_selling_product in best_selling_products %}
+                                {% include "includes/product_each_item.html" with product=best_selling_product %}
+                            {% endfor %}
 
                         </div>
                     </div>
@@ -189,9 +188,9 @@
                     <div class="kid-item-carousel">
                         <div class="owl-kid-item owl-carousel">
 
-                           {% for top_rated_product in top_rated_products %}
-                           	  {% include "includes/product_each_item.html" with product=top_rated_product %}
-                           {% endfor %}
+                            {% for top_rated_product in top_rated_products %}
+                                {% include "includes/product_each_item.html" with product=top_rated_product %}
+                            {% endfor %}
 
                         </div>
                     </div>
@@ -201,7 +200,7 @@
     </section>
     <!-- ***** featured_products  Area Ends ***** -->
 
-        <!-- ***** featured_products  Area Starts ***** -->
+    <!-- ***** featured_products  Area Starts ***** -->
     <section class="section" id="sold">
         <div class="container">
             <div class="row">
@@ -213,14 +212,14 @@
                 </div>
             </div>
         </div>
-        <div class="container" >
+        <div class="container">
             <div class="row">
                 <div class="col-lg-12">
                     <div class="kid-item-carousel">
                         <div class="owl-kid-item owl-carousel">
 
                             {% for featured_product in featured_products %}
-                            	 {% include "includes/product_each_item.html" with product=featured_product %}
+                                {% include "includes/product_each_item.html" with product=featured_product %}
                             {% endfor %}
 
                         </div>
@@ -239,19 +238,25 @@
                     <div class="left-content">
                         <h2 class="text-right">محصولات ما را کاوش کنید</h2>
                         <span class="text-right">
-                            لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطر آن چنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع
+                            وقتی میگوییم بازار در جیب شماست این تنها یک شعار نیست شما می توانید تمامی محصولاتی که بررسی آن ساعت ها وقت و انرژی از شما میگیرد را به راحت ترین شکل ممکن درکنار ما بررسی و کاوش کنید
                         </span>
                         <div class="quote text-right">
-                            <i class="fa fa-quote-right"></i><p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و.</p>
+                            <i class="fa fa-quote-right"></i>
+                            <p>اما چی باعث می شود به خرید آنلاین علاقه مند بشین؟</p>
                         </div>
                         <p class="text-right">
-                            لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطر آن چنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع
+                            ما در جیب بازار یک تیم مجرب و با تجربه را در اختیار داریم که تمامی محصولات را بارها از نظر
+                            جنس,تنوع رنگ,تنوع سایز یا حتی محبوب ترین برای شما عزیزان بررسی میکنند.
                         </p>
                         <p class="text-right">
-                            لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطر آن چنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع
+                            با تمام این توضیحات اگر شما عزیزان همچنان علاقه مند به خرید حضوری هستید میتوانید به شعب
+                            مختلف ما مراجعه کنید .
+                            همچنین از شما مشتریان عزیز می خواهیم که در صورت رضایت مارا به دوستان و آشنایان خود معرفی
+                            کنید ما💙
+
                         </p>
                         <div class="main-border-button text-right">
-                            <a href="products.html">بیشتر پیدا کنید</a>
+                            <a href="{% url 'product_page' %}">بازدید محصولات</a>
                         </div>
                     </div>
                 </div>
@@ -295,79 +300,28 @@
                 <div class="col-lg-12">
                     <div class="section-heading">
                         <h2 class="text-right">رسانه های اجتماعی</h2>
-                        <span class="text-right">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است.</span>
+                        <span class="text-right">{{ SocialMedia.massage }}</span>
                     </div>
                 </div>
             </div>
         </div>
         <div class="container">
             <div class="row images">
-                <div class="col-2">
-                    <div class="thumb">
-                        <div class="icon">
-                            <a href="http://instagram.com">
-                                <h6>مد</h6>
-                                <i class="fa fa-instagram"></i>
-                            </a>
+                {% if SocialMedia %}
+                    {% for gallery in SocialMedia.socialmediaservicesgallery_set.all %}
+                        <div class="col-2">
+                            <div class="thumb">
+                                <div class="icon">
+                                    <a href="#">
+                                        <h6>مد</h6>
+                                        <i class="fa fa-instagram"></i>
+                                    </a>
+                                </div>
+                                <img src="{{ gallery.image.url }}" alt="">
+                            </div>
                         </div>
-                        <img src="static/images/instagram-01.jpg" alt="">
-                    </div>
-                </div>
-                <div class="col-2">
-                    <div class="thumb">
-                        <div class="icon">
-                            <a href="http://instagram.com">
-                                <h6>جدید</h6>
-                                <i class="fa fa-instagram"></i>
-                            </a>
-                        </div>
-                        <img src="static/images/instagram-02.jpg" alt="">
-                    </div>
-                </div>
-                <div class="col-2">
-                    <div class="thumb">
-                        <div class="icon">
-                            <a href="http://instagram.com">
-                                <h6>برند</h6>
-                                <i class="fa fa-instagram"></i>
-                            </a>
-                        </div>
-                        <img src="static/images/instagram-03.jpg" alt="">
-                    </div>
-                </div>
-                <div class="col-2">
-                    <div class="thumb">
-                        <div class="icon">
-                            <a href="http://instagram.com">
-                                <h6>آرایشی</h6>
-                                <i class="fa fa-instagram"></i>
-                            </a>
-                        </div>
-                        <img src="static/images/instagram-04.jpg" alt="">
-                    </div>
-                </div>
-                <div class="col-2">
-                    <div class="thumb">
-                        <div class="icon">
-                            <a href="http://instagram.com">
-                                <h6>چرم</h6>
-                                <i class="fa fa-instagram"></i>
-                            </a>
-                        </div>
-                        <img src="static/images/instagram-05.jpg" alt="">
-                    </div>
-                </div>
-                <div class="col-2">
-                    <div class="thumb">
-                        <div class="icon">
-                            <a href="http://instagram.com">
-                                <h6>کیف</h6>
-                                <i class="fa fa-instagram"></i>
-                            </a>
-                        </div>
-                        <img src="static/images/instagram-06.jpg" alt="">
-                    </div>
-                </div>
+                    {% endfor %}
+                {% endif %}
             </div>
         </div>
     </section>
@@ -377,45 +331,22 @@
     <div class="subscribe">
         <div class="container">
             <div class="row">
-                <div class="col-lg-8">
-                    <div class="section-heading text-right">
-                        <h2>با عضویت در خبرنامه ما می توانید 30 درصد تخفیف دریافت کنید</h2>
-                        <span>جزئیات تا جزئیات چیزی است که هگزاشاپ را از تم های دیگر متمایز می کند.</span>
-                    </div>
-                    <form id="subscribe" action="" method="get">
-                        <div class="row">
-                          <div class="col-lg-5">
-                            <fieldset>
-                              <input name="name" type="text" id="name" placeholder="نام شما" required="">
-                            </fieldset>
-                          </div>
-                          <div class="col-lg-5">
-                            <fieldset>
-                              <input name="email" type="text" id="email" pattern="[^ @]*@[^ @]*" placeholder="ایمیل شما" required="">
-                            </fieldset>
-                          </div>
-                          <div class="col-lg-2">
-                            <fieldset class="text-right">
-                              <button type="submit" id="form-submit" class="main-dark-button"><i class="fa fa-paper-plane send"></i></button>
-                            </fieldset>
-                          </div>
-                        </div>
-                    </form>
-                </div>
+                {% include 'feedback_box/include/feedback_box.html' %}
                 <div class="col-lg-4">
                     <div class="row">
                         <div class="col-6 text-right">
                             <ul>
-                                <li>فروشگاه آدرس:<br><span>ایران ، تهران</span></li>
-                                <li>تلفن:<br><span>021-020-0340</span></li>
-                                <li>دفتر آدرس:<br><span>کریم خان</span></li>
+                                <li>فروشگاه آدرس:<br><span>{{ site_setting.address }}</span></li>
+                                <li>تلفن:<br><span>{{ site_setting.phone }}</span></li>
+                                <li>دفتر آدرس:<br><span>{{ site_setting.address }}</span></li>
                             </ul>
                         </div>
                         <div class="col-6 text-right">
                             <ul>
-                                <li>ساعات کاری:<br><span>07:30 AM - 9:30 PM Daily</span></li>
-                                <li>ایمیل:<br><span>info@company.com</span></li>
-                                <li>شبکه های مجازی:<br><span><a href="#">فیسبوک</a>, <a href="#">اینستاگرام</a>, <a href="#">بیهانس</a>, <a href="#">لینکدین</a></span></li>
+                                <li>ساعات کاری:<br><span>{{ site_setting.working_hours }}</span></li>
+                                <li>ایمیل:<br><span>{{ site_setting.email }}</span></li>
+                                <li>شبکه های مجازی:<br><span><a href="{{ site_setting.github_url }}">گیت هاب</a>, <a
+                                        href="{{ site_setting.instagram_url }}">اینستاگرام</a>,  </span></li>
                             </ul>
                         </div>
                     </div>

@@ -1,7 +1,8 @@
 from django.shortcuts import render
-
+from Contact_us_page.forms import FeedbackBoxForm
 from Product_page.models import Product
-from site_config.models import SiteSetting,FooterLink,FooterLinkBox
+from site_config.models import SiteSetting, FooterLinkBox, SocialMediaServices
+
 
 def home_page(request):
 
@@ -27,21 +28,29 @@ def home_page(request):
         rating__gt=0
     ).order_by('-rating')[:8]
 
+    SocialMedia=SocialMediaServices.objects.filter(site=data).first()
+
     context = {
         'site_setting': data,
         'latest_products': latest_products,
         'best_selling_products': best_selling_products,
-        'top_rated_products': top_rated_products
+        'top_rated_products': top_rated_products,
+        'form': FeedbackBoxForm(),
+        'SocialMedia': SocialMedia
     }
 
     if featured_products.exists():
         context['featured_products'] = featured_products
 
     return render(request, 'home_page/home_page.html', context)
+
+
+
 def header_site_component(request):
     data : SiteSetting = SiteSetting.objects.filter(is_main_setting=True).first()
     context = {'site_setting':data}
     return render(request,"main/header_site_component.html",context)
+
 
 
 def footer_site_component(request):
@@ -53,3 +62,6 @@ def footer_site_component(request):
                }
 
     return render(request,"main/footer_site_component.html",context)
+
+
+

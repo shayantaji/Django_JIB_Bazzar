@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import SiteSetting,FooterLink,FooterLinkBox,SiteServices
+from .models import SiteSetting,FooterLink,FooterLinkBox,SiteServices,SocialMediaServices,SocialMediaServicesGallery
 
 
 class SiteSettingAdmin(admin.ModelAdmin):
@@ -12,12 +12,22 @@ class SiteSettingAdmin(admin.ModelAdmin):
 
 class SiteServicesAdmin(admin.ModelAdmin):
 
-
     list_display = ['title']
 
+
+
+class SocialMediaServicesGalleryInline(admin.TabularInline):
+    model = SocialMediaServicesGallery
+    extra = 6
+
+
+class SocialMediaServicesAdmin(admin.ModelAdmin):
+    list_display = ['site']
+    inlines = [SocialMediaServicesGalleryInline]
 
 
 admin.site.register(SiteSetting, SiteSettingAdmin)
 admin.site.register(FooterLink)
 admin.site.register(FooterLinkBox)
 admin.site.register(SiteServices , SiteServicesAdmin)
+admin.site.register(SocialMediaServices,SocialMediaServicesAdmin)
