@@ -1,4 +1,4 @@
-<div class="col-lg-8">
+<div class="col-lg-8" id="feedback-form">
 
     <div class="section-heading text-right">
         <h2>شما میتوانید انتقادات و نظرات خودتان را برای بهبود کیفیت سایت ما ارسال نمایید</h2>
@@ -8,12 +8,15 @@
         </span>
     </div>
 
-    <form
-            id="feedback-form"
-            action="{% url 'feedback_box' %}"
-            method="post">
+    <form id="feedback-form" action="" method="post" id="feedback-form">
 
         {% csrf_token %}
+
+        {% if form.errors %}
+            <script>
+                window.location.hash = "#feedback-form";
+            </script>
+        {% endif %}
 
         <div class="row">
 

@@ -1,4 +1,5 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+
 from Contact_us_page.forms import FeedbackBoxForm
 from Product_page.models import Product
 from site_config.models import SiteSetting, FooterLinkBox, SocialMediaServices
@@ -30,13 +31,21 @@ def home_page(request):
 
     SocialMedia=SocialMediaServices.objects.filter(site=data).first()
 
+    if request.method == "POST":
+        form = FeedbackBoxForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect("feedback_massage")
+    else:
+        form = FeedbackBoxForm()
+
     context = {
         'site_setting': data,
         'latest_products': latest_products,
         'best_selling_products': best_selling_products,
         'top_rated_products': top_rated_products,
-        'form': FeedbackBoxForm(),
-        'SocialMedia': SocialMedia
+        'SocialMedia': SocialMedia,
+        'form': form
     }
 
     if featured_products.exists():

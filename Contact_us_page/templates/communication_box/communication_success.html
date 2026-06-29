@@ -1,0 +1,26 @@
+{% extends 'main/_layout.html' %}
+{% block title %}
+	جیب بازار -پیام شما ثبت شد
+{% endblock %}
+{% block content %}
+
+<div class="activate-container">
+    <div class="activate-box">
+
+        <div class="activate-icon">✔</div>
+
+        <h2 class="activate-title">
+            پیام شما  با موفقیت ثبت گردید✔
+            💌در سریع ترین فرصت پاسخ پیامتان را به ایمیل دریافت شده ارسال خواهیم کرد
+
+        </h2>
+
+
+        <a class="activate-btn" href="{% url 'home' %}">
+            بازگشت به صفحه اصلی
+        </a>
+
+    </div>
+</div>
+
+{% endblock %}

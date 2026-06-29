@@ -280,3 +280,17 @@ textarea {
     color: #2a2a2a !important;
     font-weight: 450 !important;
 }
+
+.errorlist {
+    list-style: none;
+    padding: 0;
+    margin: 8px 0 0;
+    color: #dc3545;
+    font-size: 13px;
+    font-weight: 500;
+    text-align: right;
+}
+
+.errorlist li {
+    margin: 0;
+}

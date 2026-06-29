@@ -1,6 +1,6 @@
 from django.contrib import admin
-from .models import FeedbackBox
-# Register your models here.
+from .models import FeedbackBox,CommunicationBox
+
 
 class FeedbackBoxAdmin(admin.ModelAdmin):
 
@@ -8,4 +8,10 @@ class FeedbackBoxAdmin(admin.ModelAdmin):
     list_editable = ['subject']
 
 
-admin.site.register(FeedbackBox)
+class CommunicationBoxAdmin(admin.ModelAdmin):
+    list_display = ['name', 'email']
+
+
+
+admin.site.register(FeedbackBox, FeedbackBoxAdmin)
+admin.site.register(CommunicationBox, CommunicationBoxAdmin)

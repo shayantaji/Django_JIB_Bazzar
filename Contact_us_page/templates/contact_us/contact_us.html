@@ -1,7 +1,7 @@
 {% extends 'main/_layout.html' %}
 {% load static %}
 {% block title %}
-	جیب بازار - تماس با ما
+    جیب بازار - تماس با ما
 {% endblock %}
 {% block content %}
 
@@ -26,39 +26,22 @@
             <div class="row">
                 <div class="col-lg-6">
                     <div id="map">
-                       <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3240.347911337763!2d51.3433855755211!3d35.69305522932472!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3f8dfe1e049919a1%3A0xb9eb32cf566c67e3!2sTehran%20Province%2C%20Tehran%2C%20District%209%2C%20Ostad%20Moein%20St%2C%20Iran!5e0!3m2!1sen!2s!4v1781535796018!5m2!1sen!2s" width="100%" height="400px" frameborder="0" style="border:0" allowfullscreen></iframe>
-                      <!-- You can simply copy and paste "Embed a map" code from Google Maps for any location. -->
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3240.347911337763!2d51.3433855755211!3d35.69305522932472!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3f8dfe1e049919a1%3A0xb9eb32cf566c67e3!2sTehran%20Province%2C%20Tehran%2C%20District%209%2C%20Ostad%20Moein%20St%2C%20Iran!5e0!3m2!1sen!2s!4v1781535796018!5m2!1sen!2s"
+                                width="100%" height="400px" frameborder="0" style="border:0" allowfullscreen></iframe>
+                        <!-- You can simply copy and paste "Embed a map" code from Google Maps for any location. -->
 
                     </div>
                 </div>
                 <div class="col-lg-6 text-right">
-                    <div class="section-heading">
+                    <div class="section-heading" id="cc-form">
                         <h2>باهامون حرف بزن. خجالتی نباش!</h2>
-                        <span>جزئیات همان چیزی است که جبب بازار را با فروشگاه های  دیگر متفاوت می کند.</span>
+                        <span>
+                          برای ارتباط و همچنین پاسخگویی به پرسش‌های شما کافیست از طریق فرم زیر با ما در ارتباط باشید.
+                            تیم ما در اولین فرصت به شما پاسخ خواهد داد.
+                         </span>
                     </div>
-                    <form id="contact" action="" method="post">
-                        <div class="row">
-                          <div class="col-lg-6">
-                            <fieldset>
-                              <input name="name" type="text" id="name" placeholder="نام شما" required="">
-                            </fieldset>
-                          </div>
-                          <div class="col-lg-6">
-                            <fieldset>
-                              <input name="email" type="text" id="email" placeholder="ایمیل شما" required="">
-                            </fieldset>
-                          </div>
-                          <div class="col-lg-12">
-                            <fieldset>
-                              <textarea name="message" rows="6" id="message" placeholder="پیام شما" required=""></textarea>
-                            </fieldset>
-                          </div>
-                          <div class="col-lg-12">
-                            <fieldset>
-                              <button type="submit" id="form-submit" class="main-dark-button"><i class="fa fa-paper-plane send"></i></button>
-                          </div>
-                        </div>
-                      </form>
+
+                    {% include 'communication_box/includes/Communication_box.html' %}
                 </div>
             </div>
         </div>
@@ -69,8 +52,8 @@
     <div class="subscribe">
         <div class="container">
             <div class="row">
-                {% include 'feedback_box/include/feedback_box.html' %}
-                <div class="col-lg-4">
+
+                <div class="col-lg-12">
                     <div class="row">
                         <div class="col-6 text-right">
                             <ul>
@@ -81,9 +64,10 @@
                         </div>
                         <div class="col-6 text-right">
                             <ul>
-                                <li>ساعات کاری:<br><span>{{ site_setting.working_hours}}</span></li>
-                                <li>ایمیل:<br><span>{{ site_setting.email}}</span></li>
-                                <li>شبکه های مجازی:<br><span> <a href="{{ site_setting.instagram_url }}">اینستاگرام</a>, <a href="{{ site_setting.github_url }}">گیت هاب</a></span></li>
+                                <li>ساعات کاری:<br><span>{{ site_setting.working_hours }}</span></li>
+                                <li>ایمیل:<br><span>{{ site_setting.email }}</span></li>
+                                <li>شبکه های مجازی:<br><span> <a href="{{ site_setting.instagram_url }}">اینستاگرام</a>, <a
+                                        href="{{ site_setting.github_url }}">گیت هاب</a></span></li>
                             </ul>
                         </div>
                     </div>
@@ -92,5 +76,5 @@
         </div>
     </div>
     <!-- ***** Subscribe Area Ends ***** -->
-    
+
 {% endblock %}

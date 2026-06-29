@@ -3,6 +3,7 @@ from django import forms
 from django.core import validators
 
 
+
 class RegisterForm(forms.Form):
 
     user_name = forms.CharField(
