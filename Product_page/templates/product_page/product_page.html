@@ -1,55 +1,163 @@
 {% extends "main/_layout.html" %}
 {% load thumbnail %}
 {% load poll_extras %}
+
 {% block title %}
     جیب بازار - لیست محصولات
 {% endblock %}
+
 {% block content %}
+
     <section class="section" id="products">
+
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <div class="section-heading" style="padding-top: 30px ">
-                        <h2>صفحه لیست محصولات </h2>
-                        <span>با خیالی راحت تمام محصولات ما را بررسی کنید. </span>
+                    <div class="section-heading" style="padding-top:30px;">
+                        <h2>صفحه لیست محصولات</h2>
+                        <span>با خیالی راحت تمام محصولات ما را بررسی کنید.</span>
                     </div>
                 </div>
             </div>
         </div>
+
         <div class="container">
+
             <div class="row">
 
-                {% for product in products %}
-                    <div class="col-lg-4">
-                    {% include "includes/product_each_item.html" with product=product %}
-                    </div>
-                {% endfor %}
+                <div class="col-lg-3">
 
-                <div class="col-lg-12">
-                    <div class="pagination">
-                        <ul>
-                            {% if page_obj.has_next %}
-                                <li>
-                                    <a href="?page={{ page_obj.next_page_number }}">بعدی</a>
-                                </li>
-                            {% endif %}
+                    <div class="product-sidebar">
 
-                            {% for page in paginator.page_range %}
-                                <li class="{% if page_obj.number == page %} active {% endif %}">
-                                    <a href="?page={{ page }}"> {{ page }} </a>
-                                </li>
+                        <h5 class="sidebar-title">
+                            دسته بندی محصولات
+                        </h5>
+
+                        <form id="filter-form" method="get">
+
+                            {% for category in categories %}
+
+                                <div class="custom-control custom-checkbox sidebar-item">
+
+                                    <input
+                                            class="custom-control-input category-filter"
+                                            type="checkbox"
+                                            id="cat{{ category.id }}"
+                                            name="category"
+                                            value="{{ category.url_title }}"
+
+                                            {% if category.url_title in selected_categories %}
+                                            checked
+                                            {% endif %}
+                                    >
+
+                                    <label
+                                            class="custom-control-label"
+                                            for="cat{{ category.id }}">
+
+                                        {{ category.title }}
+
+                                    </label>
+
+                                </div>
+
                             {% endfor %}
 
-                            {% if page_obj.has_previous %}
-                                <li>
-                                    <a href="?page={{ page_obj.previous_page_number  }}">قبلی</a>
-                                </li>
-                            {% endif %}
+                        </form>
 
-                        </ul>
                     </div>
+
                 </div>
+
+                <div class="col-lg-9">
+
+                    <div class="row">
+
+                        {% for product in products %}
+
+                            <div class="col-lg-4">
+
+                                {% include "includes/product_each_item.html" with product=product %}
+
+                            </div>
+
+                        {% empty %}
+
+                            <div class="col-lg-12 text-center">
+                                <h5>محصولی یافت نشد.</h5>
+                            </div>
+
+                        {% endfor %}
+
+                    </div>
+
+
+                    <div class="row">
+
+                        <div class="col-lg-12">
+
+                            <div class="pagination">
+
+                                <ul>
+
+                                    {% if page_obj.has_previous %}
+                                        <li>
+                                            <a href="?{{ query_params }}{% if query_params %}&{% endif %}page={{ page_obj.previous_page_number }}">
+                                                قبلی
+                                            </a>
+                                        </li>
+                                    {% endif %}
+
+                                    {% for page in paginator.page_range %}
+
+                                        <li class="{% if page_obj.number == page %}active{% endif %}">
+
+                                            <a href="?{{ query_params }}{% if query_params %}&{% endif %}page={{ page }}">
+                                                {{ page }}
+                                            </a>
+
+                                        </li>
+
+                                    {% endfor %}
+
+                                    {% if page_obj.has_next %}
+                                        <li>
+                                            <a href="?{{ query_params }}{% if query_params %}&{% endif %}page={{ page_obj.next_page_number }}">
+                                                بعدی
+                                            </a>
+                                        </li>
+                                    {% endif %}
+
+                                </ul>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
             </div>
+
         </div>
+
     </section>
+
+    <script>
+
+        const filters = document.querySelectorAll(".category-filter");
+
+        filters.forEach(function (item) {
+
+            item.addEventListener("change", function () {
+
+                document.getElementById("filter-form").submit();
+
+            });
+
+        });
+
+    </script>
+
 {% endblock %}

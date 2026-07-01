@@ -11,7 +11,7 @@ from utils.email_service import send_email
 from django.contrib.auth import login, logout
 
 
-# Create your views here.
+
 
 class RegisterView(FormView):
 
@@ -86,9 +86,9 @@ class LoginView(FormView):
         remember_me = self.request.POST.get('remember-me')
 
         if remember_me:
-            self.request.session.set_expiry(60 * 60 * 24 * 3)  # 3 روز
+            self.request.session.set_expiry(60 * 60 * 24 * 3)
         else:
-            self.request.session.set_expiry(0)  # تا بستن مرورگر
+            self.request.session.set_expiry(0)
 
         return super().form_valid(form)
 

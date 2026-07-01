@@ -294,3 +294,28 @@ textarea {
 .errorlist li {
     margin: 0;
 }
+.product-sidebar{
+
+    border:1px solid #eee;
+
+    padding:25px;
+
+    border-radius:10px;
+
+    background:white;
+
+}
+
+.sidebar-title{
+
+    font-weight:bold;
+
+    margin-bottom:20px;
+
+}
+
+.sidebar-item{
+
+    margin-bottom:15px;
+
+}

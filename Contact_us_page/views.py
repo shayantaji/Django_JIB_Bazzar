@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from django.urls import reverse_lazy
+from django.urls import reverse_lazy, reverse
 from django.views.generic import FormView, TemplateView
 from Contact_us_page.forms import FeedbackBoxForm,CommunicationForm
 from site_config.models import SiteSetting
@@ -7,8 +7,14 @@ from site_config.models import SiteSetting
 
 def Contact_Us_page(request):
 
+    data = SiteSetting.objects.first()
 
     if request.method == "POST":
+
+        if not request.user.is_authenticated:
+            login_url = reverse('login')
+            return redirect(f"{login_url}?next={request.path}")
+
         communication = CommunicationForm(request.POST)
 
         if communication.is_valid():
@@ -17,9 +23,6 @@ def Contact_Us_page(request):
 
     else:
         communication = CommunicationForm()
-
-
-    data = SiteSetting.objects.first()
 
     context = {
         'site_setting': data,
