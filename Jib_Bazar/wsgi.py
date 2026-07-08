@@ -11,6 +11,6 @@ import os
 
 from django.core.wsgi import get_wsgi_application
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'Jib_Bazar.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'Jib_Bazar.setting.production')
 
 application = get_wsgi_application()
