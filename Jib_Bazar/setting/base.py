@@ -5,6 +5,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent.parent
 
 SECRET_KEY = config("SECRET_KEY")
 
+SITE_URL = config("SITE_URL")
+
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
