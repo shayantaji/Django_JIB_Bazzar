@@ -14,17 +14,19 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-
     'Home_page',
     'account_module',
     'Product_page',
     'Contact_us_page',
     'About_us_page',
+    'api',
     'polls',
     'site_config',
-
     'django_render_partial',
     'sorl.thumbnail',
+    'rest_framework',
+
+
 ]
 
 MIDDLEWARE = [
