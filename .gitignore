@@ -13,3 +13,8 @@ db.sqlite3
 static_dr/
 
 *.zip
+passenger_wsgi.py
+
+stderr.log
+
+tmp/

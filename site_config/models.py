@@ -8,10 +8,10 @@ class SiteSetting(models.Model):
     phone = models.CharField(max_length=200, blank=True, null=True, verbose_name='تلفن')
     fax = models.CharField(max_length=200, blank=True, null=True, verbose_name='فکس')
     email = models.EmailField(blank=True, null=True, verbose_name='ایمیل')
-    telegram_url = models.CharField(blank=True, null=True, verbose_name='لینک تلگرام')
-    instagram_url = models.CharField(blank=True, null=True, verbose_name='لینک اینستاگرام')
+    telegram_url = models.CharField( max_length=200,blank=True, null=True, verbose_name='لینک تلگرام')
+    instagram_url = models.CharField( max_length=200,blank=True, null=True, verbose_name='لینک اینستاگرام')
     github_url = models.URLField(blank=True, null=True, verbose_name='لینک گیت هاب')
-    linkedin_url = models.CharField(blank=True, null=True, verbose_name='لینک لینکدین')
+    linkedin_url = models.CharField( max_length=200,blank=True, null=True, verbose_name='لینک لینکدین')
     site_logo = models.ImageField(upload_to='images/site-setting/', verbose_name='لوگو سایت')
     favicon = models.ImageField(upload_to='images/site-setting/', blank=True, null=True, verbose_name='فاوآیکون سایت')
     copy_right = models.TextField(verbose_name='متن کپی رایت', blank=True, null=True)
@@ -70,7 +70,7 @@ class SiteServices(models.Model):
 
 class  SocialMediaServices(models.Model):
     site = models.ForeignKey(SiteSetting, on_delete=models.CASCADE)
-    massage= models.CharField(verbose_name='توضیحات',null=True,blank=True)
+    massage= models.CharField(max_length=200,verbose_name='توضیحات',null=True,blank=True)
 
 
     def __str__(self):
