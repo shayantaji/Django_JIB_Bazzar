@@ -87,6 +87,9 @@ DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+
+
+
 REST_FRAMEWORK = {
 
 

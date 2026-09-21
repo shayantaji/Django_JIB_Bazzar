@@ -15,14 +15,15 @@ CSRF_TRUSTED_ORIGINS = [
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'ssqhudjj_jibbazar_project_db',
-        'USER': 'ssqhudjj_shayan11exe',
-        'PASSWORD': 'Def11esteghlal',
+        'NAME': config('DB_NAME'),
+        'USER': config('DB_USER'),
+        'PASSWORD': config('DB_PASSWORD'),
         'OPTIONS': {
             'autocommit': True,
         }
     }
 }
+
 
 STATICFILES_DIRS = [
     BASE_DIR / "static",

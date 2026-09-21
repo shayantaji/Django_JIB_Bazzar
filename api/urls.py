@@ -8,6 +8,8 @@ from account_module.api_views import UserApiView
 from Product_page.api_views import ProductApiView,ProductCategoryApiView,ProductGalleryApiView
 from rest_framework.routers import DefaultRouter
 #region router
+
+
 site_router = DefaultRouter()
 site_router.register(
     '',

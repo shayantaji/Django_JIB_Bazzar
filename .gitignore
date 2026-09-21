@@ -18,3 +18,5 @@ passenger_wsgi.py
 stderr.log
 
 tmp/
+
+img clothes_jib/
